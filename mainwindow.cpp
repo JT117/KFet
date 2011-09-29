@@ -35,6 +35,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->gridLayout->addWidget( boutonCafe, 1, 0, 1, 1 );
     ui->gridLayout->addWidget( boutonPizza, 1, 1, 1, 1 );
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setHostName("localhost");
+    db.setDatabaseName("kfet");
+    bool ok = db.open();
+
+    qDebug() << db.tables() << endl;
 }
 
 MainWindow::~MainWindow()

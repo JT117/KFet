@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QTableWidget>
 #include <QToolButton>
+#include <QSqlDatabase>
+#include <QDebug>
 
 namespace Ui {
     class MainWindow;
