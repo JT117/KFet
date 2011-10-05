@@ -5,14 +5,14 @@
 #include <QStringList>
 #include <QString>
 
-class Tab
+class CTab
 {
 public:
-    Tab();
+    CTab();
 private:
-    QString nom;
-    QStringList nomColonne;
-    QList<int> listID;
+    QString sTABnom;
+    QStringList slTABnomColonne;
+    QList<int> ilTABid;
 };
 
 #endif // TAB_H

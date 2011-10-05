@@ -1,5 +1,5 @@
 #include "client.h"
 
-Client::Client()
+CClient::CClient()
 {
 }

@@ -3,16 +3,16 @@
 
 #include <QString>
 
-class Client
+class CClient
 {
 public:
-    Client();
+    CClient();
 
 protected:
-    QString nom;
-    QString prenom;
-    int id;
-    int dette;
+    QString sCLInom;
+    QString sCLIprenom;
+    int iCLIid;
+    int iCLIdette;
 };
 
 #endif // CLIENT_H

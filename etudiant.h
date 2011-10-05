@@ -3,14 +3,14 @@
 
 #include "client.h"
 
-class Etudiant : public Client
+class CEtudiant : public CClient
 {
 public:
-    Etudiant();
+    CEtudiant();
 
 private:
-    QString promo;
-    QString status;
+    QString sETUpromo;
+    QString sETUstatus;
 };
 
 #endif // ETUDIANT_H

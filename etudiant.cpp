@@ -1,5 +1,5 @@
 #include "etudiant.h"
 
-Etudiant::Etudiant()
+CEtudiant::CEtudiant()
 {
 }

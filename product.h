@@ -3,16 +3,16 @@
 
 #include <QString>
 
-class Product
+class CProduct
 {
 public:
-    Product();
+    CProduct();
 
 private:
-    QString nom;
-    float prix;
-    QString cheminImage;
-    int id;
+    QString sPROnom;
+    float fPROprix;
+    QString sPROcheminImage;
+    int iPROid;
 };
 
 #endif // PRODUCT_H

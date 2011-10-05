@@ -1,5 +1,5 @@
 #include "product.h"
 
-Product::Product()
+CProduct::CProduct()
 {
 }

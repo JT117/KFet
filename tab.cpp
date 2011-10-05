@@ -1,5 +1,5 @@
 #include "tab.h"
 
-Tab::Tab()
+CTab::CTab()
 {
 }
