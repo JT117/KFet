@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -40,6 +41,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     db.setHostName("localhost");
     db.setDatabaseName("kfet");
     bool ok = db.open();
+
+    if( !ok )
+    {
+        QMessageBox::warning( this, "Erreur", "Pas d'acces a la BDD");
+    }
 
     qDebug() << db.tables() << endl;
 }

@@ -7,6 +7,7 @@
 #include <QToolButton>
 #include <QSqlDatabase>
 #include <QDebug>
+#include <QMessageBox>
 
 namespace Ui {
     class MainWindow;
