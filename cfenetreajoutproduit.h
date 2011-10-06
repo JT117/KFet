@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QMessageBox>
 
 namespace Ui {
     class CFenetreAjoutProduit;
@@ -23,6 +24,7 @@ private:
 
 public slots :
     void afficher();
+    void ajouter();
 };
 
 #endif // CFENETREAJOUTPRODUIT_H
