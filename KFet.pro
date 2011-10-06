@@ -16,17 +16,29 @@ SOURCES += main.cpp\
     client.cpp \
     etudiant.cpp \
     product.cpp \
-    tab.cpp
+    tab.cpp \
+    cfenetreajouttab.cpp
 
 HEADERS  += \
     mainwindow.h \
     client.h \
     etudiant.h \
     product.h \
-    tab.h
+    tab.h \
+    cfenetreajouttab.h
 
 FORMS    += \
-    mainwindow.ui
+    mainwindow.ui \
+    cfenetreajouttab.ui
+
+
+
+
+
+
+
+
+
 
 
 
