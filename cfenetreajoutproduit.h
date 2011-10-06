@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 namespace Ui {
     class CFenetreAjoutProduit;
