@@ -55,6 +55,9 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="text">
+     <string>112</string>
+    </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">

@@ -1,7 +1,11 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
+<<<<<<< HEAD
 ** Created: Thu 6. Oct 16:06:42 2011
+=======
+** Created: Thu 6. Oct 15:44:46 2011
+>>>>>>> f882ff3ec3230d90beb0d132b04dae96667f3275
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -101,6 +105,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Recherche", 0, QApplication::UnicodeUTF8));
+        rechercheLineEdit->setText(QApplication::translate("MainWindow", "112", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0, QApplication::UnicodeUTF8));
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
