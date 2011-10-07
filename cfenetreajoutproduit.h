@@ -3,9 +3,10 @@
 
 #include <QDialog>
 #include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QMessageBox>
+
+#include "cgestionbdd.h"
+#include "product.h"
 
 namespace Ui {
     class CFenetreAjoutProduit;

@@ -43,32 +43,11 @@ void CFenetreAjoutProduit::ajouter()
 
 void CFenetreAjoutProduit::afficher()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName("localhost");
-    db.setDatabaseName("kfet");
-    bool baseOuverte = db.open();
+    QList<CProduct*>* listProduit = CGestionBDD::getProductList();
 
-    if( baseOuverte )
+    for( int iBoucle = 0; iBoucle < listProduit->size(); iBoucle++ )
     {
-        QSqlQuery query;
-        query.exec( "SELECT * FROM PRODUCT;");
-
-        qDebug() << endl;
-
-        while( query.next() )
-        {
-            int id = query.value(0).toInt();                                                  // on recupere l'id ne pas oublier la convertion dans le bon type
-            QString nom = query.value(1).toString();                                          // recuperation du nom
-            QString prix = query.value(2).toString();                                         // recuperation du prix
-
-            qDebug() << "ID : " << id << " Produit : " << nom << " " << prix;
-        }
-
-        db.close();
-    }
-    else
-    {
-        QMessageBox::warning( this, "Avertissement", "La base de données n'a pas pu être ouverte." );
+        listProduit->at(iBoucle)->afficher();
     }
 }
 

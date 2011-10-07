@@ -1,0 +1,12 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/client.o
+./release/etudiant.o
+./release/product.o
+./release/tab.o
+./release/cfenetreajoutproduit.o
+./release/cgestionbdd.o
+./release/moc_mainwindow.o
+./release/moc_cfenetreajoutproduit.o
+);

@@ -2,17 +2,21 @@
 #define PRODUCT_H
 
 #include <QString>
+#include <QDebug>
 
 class CProduct
 {
 public:
     CProduct();
+    CProduct( int id, QString nom, QString prix );
+    void afficher();
 
 private:
-    QString sPROnom;
-    float fPROprix;
-    QString sPROcheminImage;
     int iPROid;
+    QString sPROnom;
+    QString sPROprix;
+    QString sPROcheminImage;
+
 };
 
 #endif // PRODUCT_H

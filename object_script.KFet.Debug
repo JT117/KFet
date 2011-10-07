@@ -1,0 +1,12 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/client.o
+./debug/etudiant.o
+./debug/product.o
+./debug/tab.o
+./debug/cfenetreajoutproduit.o
+./debug/cgestionbdd.o
+./debug/moc_mainwindow.o
+./debug/moc_cfenetreajoutproduit.o
+);

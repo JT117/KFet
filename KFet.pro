@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     etudiant.cpp \
     product.cpp \
     tab.cpp \
-    cfenetreajoutproduit.cpp
+    cfenetreajoutproduit.cpp \
+    cgestionbdd.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -25,11 +26,14 @@ HEADERS  += \
     etudiant.h \
     product.h \
     tab.h \
-    cfenetreajoutproduit.h
+    cfenetreajoutproduit.h \
+    cgestionbdd.h
 
 FORMS    += \
     mainwindow.ui \
     cfenetreajoutproduit.ui
+
+
 
 
 
