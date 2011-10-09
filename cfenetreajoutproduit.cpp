@@ -8,11 +8,8 @@ CFenetreAjoutProduit::CFenetreAjoutProduit(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->ppbFAPAnnuler,SIGNAL(clicked()),this,SLOT(close()));
-
     connect(ui->ppbFAPboutonOK,SIGNAL(clicked()),this,SLOT(ajouter()));
-
-    this->afficher();
-
+    connect( ui->ppbFAPparcourir, SIGNAL(clicked()), this, SLOT( ouvrirFichier() ) );
 }
 
 CFenetreAjoutProduit::~CFenetreAjoutProduit()
@@ -22,32 +19,39 @@ CFenetreAjoutProduit::~CFenetreAjoutProduit()
 
 void CFenetreAjoutProduit::ajouter()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName("localhost");
-    db.setDatabaseName("kfet");
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( ui->pleFAPnomproduit->text() != "" && ui->pleFAPprix->text() != "" && ui->pleFAPcheminImage->text() != "" )
     {
-        QSqlQuery query;
-        query.exec("INSERT INTO Product (nom, prix) VALUES ( '" + ui->pleFAPnomproduit->text() + "', '" + ui->pleFAPprix->text() + "' )");
+        bool ok = true;
+        float prix = ui->pleFAPprix->text().toFloat( &ok );
 
-        db.close();
+        if( ok && prix > 0.0 && prix < 50 )
+        {
+            QString fileName = ui->pleFAPcheminImage->text();
+            QFile image( fileName );
+            QStringList listDecoupeChemin = fileName.split( '/' );
+
+            image.copy( QDir::currentPath() + "/systeme/image/" + listDecoupeChemin.last() );
+
+            CProduct product( 0, ui->pleFAPnomproduit->text(), ui->pleFAPprix->text(), "/systeme/image/" + listDecoupeChemin.last() );
+            CGestionBDD::addProduct( product );
+            this->accept();
+        }
+        else
+        {
+            QMessageBox::warning( this, "KFet", "Veuillez indiquez un prix valide." );
+        }
     }
     else
     {
-        QMessageBox::warning( this, "Avertissement", "La base de données n'a pas pu être ouverte." );
+        QMessageBox::warning( this, "KFet", "Veuillez remplir tout les champs." );
     }
-
 }
 
-void CFenetreAjoutProduit::afficher()
+void CFenetreAjoutProduit::ouvrirFichier()
 {
-    QList<CProduct*>* listProduit = CGestionBDD::getProductList();
+    QString currentDir = QDir::currentPath();
+    QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir", currentDir , "Image (*.png *.jpg *.bmp)" );
 
-    for( int iBoucle = 0; iBoucle < listProduit->size(); iBoucle++ )
-    {
-        listProduit->at(iBoucle)->afficher();
-    }
+    ui->pleFAPcheminImage->setText( fileName );
+
 }
-

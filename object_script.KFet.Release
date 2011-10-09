@@ -7,6 +7,8 @@ INPUT(
 ./release/tab.o
 ./release/cfenetreajoutproduit.o
 ./release/cgestionbdd.o
+./release/cfenetregestionproduit.o
 ./release/moc_mainwindow.o
 ./release/moc_cfenetreajoutproduit.o
+./release/moc_cfenetregestionproduit.o
 );

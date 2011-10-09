@@ -7,6 +7,8 @@ INPUT(
 ./debug/tab.o
 ./debug/cfenetreajoutproduit.o
 ./debug/cgestionbdd.o
+./debug/cfenetregestionproduit.o
 ./debug/moc_mainwindow.o
 ./debug/moc_cfenetreajoutproduit.o
+./debug/moc_cfenetregestionproduit.o
 );

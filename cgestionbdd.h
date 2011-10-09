@@ -15,7 +15,10 @@ class CGestionBDD
 public:
     CGestionBDD();
 
-    static QList<CProduct*>* getProductList();
+    static void getProductList( QList<CProduct*>& listProduct );
+    static void addProduct( CProduct& product );
+    static void removeProduct( CProduct& product );
+    static void updateProduct( CProduct& product );
 
 private:
     static QString sGESnomBDD;

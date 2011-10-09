@@ -4,11 +4,15 @@ CProduct::CProduct()
 {
 }
 
-CProduct::CProduct( int id, QString nom, QString prix ) : iPROid( id ), sPROnom( nom ), sPROprix( prix )
+CProduct::CProduct( int id, QString nom, QString prix, QString cheminImage ) : iPROid( id ), sPROnom( nom ), sPROprix( prix ), sPROcheminImage( cheminImage )
 {
 }
 
 void CProduct::afficher()
 {
-    qDebug() << iPROid << sPROnom << sPROprix << endl;
+    qDebug() << iPROid << sPROnom << sPROprix << sPROcheminImage << endl;
+}
+
+CProduct::~CProduct()
+{
 }

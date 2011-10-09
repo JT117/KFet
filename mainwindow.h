@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QMessageBox>
 
+#include "cfenetregestionproduit.h"
+
 namespace Ui {
     class MainWindow;
 }
@@ -20,6 +22,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+public slots:
+    void ouvrirGestionProduit();
 
 private:
     Ui::MainWindow *ui;

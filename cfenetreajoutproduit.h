@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QDebug>
 #include <QMessageBox>
+#include <QDir>
+#include <QFileDialog>
 
 #include "cgestionbdd.h"
 #include "product.h"
@@ -20,12 +22,13 @@ public:
     explicit CFenetreAjoutProduit(QWidget *parent = 0);
     ~CFenetreAjoutProduit();
 
+public slots :
+    void ajouter();
+    void ouvrirFichier();
+
 private:
     Ui::CFenetreAjoutProduit *ui;
 
-public slots :
-    void afficher();
-    void ajouter();
 };
 
 #endif // CFENETREAJOUTPRODUIT_H

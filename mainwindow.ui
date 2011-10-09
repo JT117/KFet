@@ -94,9 +94,21 @@
      <string>Fichier</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuOutils">
+    <property name="title">
+     <string>Outils</string>
+    </property>
+    <addaction name="actionGestion_des_produits"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuOutils"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionGestion_des_produits">
+   <property name="text">
+    <string>Gestion des produits</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

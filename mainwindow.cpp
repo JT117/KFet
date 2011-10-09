@@ -48,9 +48,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     }
 
     qDebug() << db.tables() << endl;
+
+    connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::ouvrirGestionProduit()
+{
+    CFenetreGestionProduit fenetreGestionProduit;// = new CFenetreGestionProduit( this );
+    fenetreGestionProduit.exec();
 }

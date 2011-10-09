@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreajoutproduit.ui'
 **
-** Created: Thu 6. Oct 19:12:39 2011
+** Created: Sat 8. Oct 17:25:31 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,6 +35,10 @@ public:
     QLineEdit *pleFAPnomproduit;
     QLabel *label_2;
     QLineEdit *pleFAPprix;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_3;
+    QLineEdit *pleFAPcheminImage;
+    QPushButton *ppbFAPparcourir;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *ppbFAPboutonOK;
@@ -44,10 +48,11 @@ public:
     {
         if (CFenetreAjoutProduit->objectName().isEmpty())
             CFenetreAjoutProduit->setObjectName(QString::fromUtf8("CFenetreAjoutProduit"));
-        CFenetreAjoutProduit->resize(218, 183);
+        CFenetreAjoutProduit->resize(287, 181);
+        CFenetreAjoutProduit->setModal(true);
         verticalLayoutWidget = new QWidget(CFenetreAjoutProduit);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 201, 163));
+        verticalLayoutWidget->setGeometry(QRect(10, 10, 261, 161));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -71,7 +76,29 @@ public:
 
         verticalLayout->addWidget(pleFAPprix);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_3 = new QLabel(verticalLayoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        pleFAPcheminImage = new QLineEdit(verticalLayoutWidget);
+        pleFAPcheminImage->setObjectName(QString::fromUtf8("pleFAPcheminImage"));
+        pleFAPcheminImage->setReadOnly(true);
+
+        horizontalLayout_2->addWidget(pleFAPcheminImage);
+
+        ppbFAPparcourir = new QPushButton(verticalLayoutWidget);
+        ppbFAPparcourir->setObjectName(QString::fromUtf8("ppbFAPparcourir"));
+        ppbFAPparcourir->setMaximumSize(QSize(26, 16777215));
+
+        horizontalLayout_2->addWidget(ppbFAPparcourir);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
@@ -101,6 +128,8 @@ public:
         CFenetreAjoutProduit->setWindowTitle(QApplication::translate("CFenetreAjoutProduit", "Dialog", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CFenetreAjoutProduit", "Nom Produit", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("CFenetreAjoutProduit", "Prix", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("CFenetreAjoutProduit", "Image :", 0, QApplication::UnicodeUTF8));
+        ppbFAPparcourir->setText(QApplication::translate("CFenetreAjoutProduit", "...", 0, QApplication::UnicodeUTF8));
         ppbFAPboutonOK->setText(QApplication::translate("CFenetreAjoutProduit", "OK", 0, QApplication::UnicodeUTF8));
         ppbFAPAnnuler->setText(QApplication::translate("CFenetreAjoutProduit", "Annuler", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

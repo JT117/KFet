@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cfenetreajoutproduit.h'
 **
-** Created: Fri 7. Oct 13:40:08 2011
+** Created: Sat 8. Oct 20:16:51 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -32,14 +32,14 @@ static const uint qt_meta_data_CFenetreAjoutProduit[] = {
 
  // slots: signature, parameters, type, tag, flags
       22,   21,   21,   21, 0x0a,
-      33,   21,   21,   21, 0x0a,
+      32,   21,   21,   21, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_CFenetreAjoutProduit[] = {
-    "CFenetreAjoutProduit\0\0afficher()\0"
-    "ajouter()\0"
+    "CFenetreAjoutProduit\0\0ajouter()\0"
+    "ouvrirFichier()\0"
 };
 
 const QMetaObject CFenetreAjoutProduit::staticMetaObject = {
@@ -71,8 +71,8 @@ int CFenetreAjoutProduit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: afficher(); break;
-        case 1: ajouter(); break;
+        case 0: ajouter(); break;
+        case 1: ouvrirFichier(); break;
         default: ;
         }
         _id -= 2;

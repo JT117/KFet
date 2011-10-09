@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu 6. Oct 15:44:46 2011
+** Created: Sun 9. Oct 12:26:58 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,6 +30,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionGestion_des_produits;
     QWidget *centralwidget;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
@@ -40,6 +41,7 @@ public:
     QWidget *tab_2;
     QMenuBar *menubar;
     QMenu *menuFichier;
+    QMenu *menuOutils;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -47,6 +49,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(949, 625);
+        actionGestion_des_produits = new QAction(MainWindow);
+        actionGestion_des_produits->setObjectName(QString::fromUtf8("actionGestion_des_produits"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayoutWidget = new QWidget(centralwidget);
@@ -82,12 +86,16 @@ public:
         menubar->setGeometry(QRect(0, 0, 949, 21));
         menuFichier = new QMenu(menubar);
         menuFichier->setObjectName(QString::fromUtf8("menuFichier"));
+        menuOutils = new QMenu(menubar);
+        menuOutils->setObjectName(QString::fromUtf8("menuOutils"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(menuFichier->menuAction());
+        menubar->addAction(menuOutils->menuAction());
+        menuOutils->addAction(actionGestion_des_produits);
 
         retranslateUi(MainWindow);
 
@@ -97,11 +105,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        actionGestion_des_produits->setText(QApplication::translate("MainWindow", "Gestion des produits", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Recherche", 0, QApplication::UnicodeUTF8));
         rechercheLineEdit->setText(QApplication::translate("MainWindow", "112", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0, QApplication::UnicodeUTF8));
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
+        menuOutils->setTitle(QApplication::translate("MainWindow", "Outils", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
