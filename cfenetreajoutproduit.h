@@ -9,6 +9,7 @@
 
 #include "cgestionbdd.h"
 #include "product.h"
+#include "clog.h"
 
 namespace Ui {
     class CFenetreAjoutProduit;

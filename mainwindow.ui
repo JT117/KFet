@@ -7,24 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>949</width>
-    <height>625</height>
+    <height>652</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Raavi</family>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>KFet - Gestion des dettes</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>40</y>
-      <width>401</width>
-      <height>541</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout"/>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -36,7 +31,7 @@
     </property>
     <property name="font">
      <font>
-      <family>MV Boli</family>
+      <family>Raavi</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -59,25 +54,85 @@
      <string>112</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>511</width>
-      <height>541</height>
+      <width>921</width>
+      <height>551</height>
      </rect>
     </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="title">
+           <string>DI3</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Tab 2</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <property name="spacing">
+        <number>4</number>
+       </property>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -99,6 +154,9 @@
      <string>Outils</string>
     </property>
     <addaction name="actionGestion_des_produits"/>
+    <addaction name="actionSuper_Utilisateur"/>
+    <addaction name="actionChanger_mot_de_passe_Admin"/>
+    <addaction name="actionSe_deconnecter"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuOutils"/>
@@ -107,6 +165,21 @@
   <action name="actionGestion_des_produits">
    <property name="text">
     <string>Gestion des produits</string>
+   </property>
+  </action>
+  <action name="actionSuper_Utilisateur">
+   <property name="text">
+    <string>Super Utilisateur</string>
+   </property>
+  </action>
+  <action name="actionSe_deconnecter">
+   <property name="text">
+    <string>Se deconnecter</string>
+   </property>
+  </action>
+  <action name="actionChanger_mot_de_passe_Admin">
+   <property name="text">
+    <string>Changer mot de passe Admin</string>
    </property>
   </action>
  </widget>

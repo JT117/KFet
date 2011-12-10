@@ -19,7 +19,10 @@ SOURCES += main.cpp\
     tab.cpp \
     cfenetreajoutproduit.cpp \
     cgestionbdd.cpp \
-    cfenetregestionproduit.cpp
+    cfenetregestionproduit.cpp \
+    cfenetrelogin.cpp \
+    fenetrechangermdp.cpp \
+    clog.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -29,12 +32,38 @@ HEADERS  += \
     tab.h \
     cfenetreajoutproduit.h \
     cgestionbdd.h \
-    cfenetregestionproduit.h
+    cfenetregestionproduit.h \
+    cfenetrelogin.h \
+    fenetrechangermdp.h \
+    clog.h
 
 FORMS    += \
     mainwindow.ui \
     cfenetreajoutproduit.ui \
-    cfenetregestionproduit.ui
+    cfenetregestionproduit.ui \
+    cfenetrelogin.ui \
+    fenetrechangermdp.ui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

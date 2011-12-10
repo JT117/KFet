@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreajoutproduit.ui'
 **
-** Created: Sat 8. Oct 17:25:31 2011
+** Created: Mon 5. Dec 09:32:57 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

@@ -7,12 +7,24 @@ class CClient
 {
 public:
     CClient();
+    CClient( int id, QString nom, QString prenom, float dette, QString promo, QString droit );
+
+    QString getNom();
+    QString getPrenom();
+    QString getPromo();
+    QString getDroit();
+    int getID();
+    float getDette();
+    void setID( int id );
+    void setNom( QString nom);
 
 protected:
     QString sCLInom;
     QString sCLIprenom;
     int iCLIid;
-    int iCLIdette;
+    float fCLIdette;
+    QString sCLIpromo;
+    QString sCLIdroit;
 };
 
 #endif // CLIENT_H

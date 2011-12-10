@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetregestionproduit.ui'
 **
-** Created: Sun 9. Oct 12:26:58 2011
+** Created: Mon 5. Dec 09:32:57 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,7 +40,6 @@ public:
     QPushButton *ppbFGPok;
     QPushButton *ppbFGPannuler;
     QSpacerItem *horizontalSpacer_2;
-    QHBoxLayout *horizontalLayout_2;
 
     void setupUi(QDialog *CFenetreGestionProduit)
     {
@@ -111,11 +110,6 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
 
 
         retranslateUi(CFenetreGestionProduit);

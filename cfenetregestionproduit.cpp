@@ -1,23 +1,27 @@
 #include "cfenetregestionproduit.h"
 #include "ui_cfenetregestionproduit.h"
 
-CFenetreGestionProduit::CFenetreGestionProduit(QWidget *parent) :
+CFenetreGestionProduit::CFenetreGestionProduit(MainWindow* main, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CFenetreGestionProduit)
 {
     ui->setupUi(this);
+    mainWindow = main;
 
     this->setupTable();
+    this->setWindowTitle("KFet - Gestion des produits");
 
     connect( ui->ppbFGPajouter, SIGNAL(clicked()), this, SLOT(ajouter()) );
     connect( ui->ppbFGPsupprimer, SIGNAL(clicked()), this, SLOT(supprimer()) );
     connect( ui->ptwFGPtableProduct, SIGNAL(cellChanged(int,int)), this, SLOT( celluleChanged(int,int) ) );
+    connect( ui->ppbFGPok, SIGNAL(clicked()), this, SLOT(accept()) );
 }
 
 CFenetreGestionProduit::~CFenetreGestionProduit()
 {
     delete ui;
     this->nettoyerListe();
+    mainWindow->updateProduit();
 }
 
 void CFenetreGestionProduit::nettoyerListe()
@@ -71,6 +75,7 @@ void CFenetreGestionProduit::supprimer()
 
         if( ret == QMessageBox::Ok )
         {
+            CLog::ecrire( "Suppression du produit : " + product->getNom() + " " + product->getPrix() );
             QFile image( QDir::currentPath() + product->getChemin() );
             image.remove();
             CGestionBDD::removeProduct( *product );
@@ -117,6 +122,7 @@ void CFenetreGestionProduit::celluleChanged( int row, int y )
     QTableWidgetItem* cheminImage = ui->ptwFGPtableProduct->item( row, 3 );
 
     CProduct product( id->text().toInt(), nom->text(), prix->text(), cheminImage->text() );
+    CLog::ecrire( "Modification d'un produit : " + id->text() + " " + nom->text() + " " + prix->text() + " " + cheminImage->text() );
     CGestionBDD::updateProduct( product );
 
     this->updateTable();

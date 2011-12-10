@@ -6,6 +6,7 @@ CFenetreAjoutProduit::CFenetreAjoutProduit(QWidget *parent) :
     ui(new Ui::CFenetreAjoutProduit)
 {
     ui->setupUi(this);
+    this->setWindowTitle("KFet - Ajout d'un produit");
 
     connect(ui->ppbFAPAnnuler,SIGNAL(clicked()),this,SLOT(close()));
     connect(ui->ppbFAPboutonOK,SIGNAL(clicked()),this,SLOT(ajouter()));
@@ -34,6 +35,10 @@ void CFenetreAjoutProduit::ajouter()
 
             CProduct product( 0, ui->pleFAPnomproduit->text(), ui->pleFAPprix->text(), "/systeme/image/" + listDecoupeChemin.last() );
             CGestionBDD::addProduct( product );
+            CLog::ecrire( "Ajout d'un nouveau produit : " +
+                          ui->pleFAPnomproduit->text() +" "+
+                          ui->pleFAPprix->text() +" "+
+                          "/systeme/image/" + listDecoupeChemin.last() );
             this->accept();
         }
         else

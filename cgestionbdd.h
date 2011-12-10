@@ -7,8 +7,10 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QVariant>
+#include <QCryptographicHash>
 
 #include "product.h"
+#include "client.h"
 
 class CGestionBDD
 {
@@ -19,6 +21,15 @@ public:
     static void addProduct( CProduct& product );
     static void removeProduct( CProduct& product );
     static void updateProduct( CProduct& product );
+
+    static void getClientList( QList<CClient*>& listClient );
+    static void addClient( CClient& client );
+    static void removeClient( CClient& client );
+    static void updateClient( CClient& client );
+
+    static bool identification( QString username, QString password );
+    static bool identification( QString password );
+    static void changerMDP( QString newPassword );
 
 private:
     static QString sGESnomBDD;
