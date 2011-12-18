@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     cfenetregestionproduit.cpp \
     cfenetrelogin.cpp \
     fenetrechangermdp.cpp \
-    clog.cpp
+    clog.cpp \
+    cfenetreajoutclient.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -35,14 +36,19 @@ HEADERS  += \
     cfenetregestionproduit.h \
     cfenetrelogin.h \
     fenetrechangermdp.h \
-    clog.h
+    clog.h \
+    cfenetreajoutclient.h
 
 FORMS    += \
     mainwindow.ui \
     cfenetreajoutproduit.ui \
     cfenetregestionproduit.ui \
     cfenetrelogin.ui \
-    fenetrechangermdp.ui
+    fenetrechangermdp.ui \
+    cfenetreajoutclient.ui
+
+
+
 
 
 

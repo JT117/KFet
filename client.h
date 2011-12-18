@@ -25,6 +25,7 @@ protected:
     float fCLIdette;
     QString sCLIpromo;
     QString sCLIdroit;
+    int iCLInumLigne;
 };
 
 #endif // CLIENT_H

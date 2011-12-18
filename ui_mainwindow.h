@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat 10. Dec 20:15:19 2011
+** Created: Sat 17. Dec 23:30:17 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -39,19 +39,22 @@ public:
     QAction *actionSe_deconnecter;
     QAction *actionChanger_mot_de_passe_Admin;
     QWidget *centralwidget;
-    QLabel *label;
-    QLineEdit *rechercheLineEdit;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QTabWidget *tabWidget;
     QWidget *tab;
     QWidget *tab_2;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
-    QSpacerItem *horizontalSpacer;
     QGridLayout *gridLayout_6;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label;
+    QLineEdit *rechercheLineEdit;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *addMoney;
+    QPushButton *addContact;
     QMenuBar *menubar;
     QMenu *menuFichier;
     QMenu *menuOutils;
@@ -61,7 +64,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(949, 652);
+        MainWindow->resize(1000, 710);
         QFont font;
         font.setFamily(QString::fromUtf8("Raavi"));
         font.setPointSize(10);
@@ -76,21 +79,9 @@ public:
         actionChanger_mot_de_passe_Admin->setObjectName(QString::fromUtf8("actionChanger_mot_de_passe_Admin"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 81, 16));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Raavi"));
-        font1.setPointSize(10);
-        font1.setBold(true);
-        font1.setWeight(75);
-        label->setFont(font1);
-        rechercheLineEdit = new QLineEdit(centralwidget);
-        rechercheLineEdit->setObjectName(QString::fromUtf8("rechercheLineEdit"));
-        rechercheLineEdit->setGeometry(QRect(90, 10, 161, 20));
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 40, 921, 551));
+        horizontalLayoutWidget->setGeometry(QRect(10, 50, 981, 611));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -112,39 +103,65 @@ public:
 
         verticalLayout_2->addWidget(tabWidget);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        horizontalLayout_2->addWidget(pushButton_2);
-
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        horizontalLayout_2->addWidget(pushButton);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
-
 
         horizontalLayout->addLayout(verticalLayout_2);
 
         gridLayout_6 = new QGridLayout();
-        gridLayout_6->setSpacing(4);
+        gridLayout_6->setSpacing(0);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         gridLayout_6->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout_6->setContentsMargins(-1, -1, 0, -1);
 
         horizontalLayout->addLayout(gridLayout_6);
+
+        horizontalLayoutWidget_2 = new QWidget(centralwidget);
+        horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 0, 331, 41));
+        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(horizontalLayoutWidget_2);
+        label->setObjectName(QString::fromUtf8("label"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Raavi"));
+        font1.setPointSize(10);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label->setFont(font1);
+
+        horizontalLayout_3->addWidget(label);
+
+        rechercheLineEdit = new QLineEdit(horizontalLayoutWidget_2);
+        rechercheLineEdit->setObjectName(QString::fromUtf8("rechercheLineEdit"));
+
+        horizontalLayout_3->addWidget(rechercheLineEdit);
+
+        horizontalLayoutWidget_3 = new QWidget(centralwidget);
+        horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
+        horizontalLayoutWidget_3->setGeometry(QRect(380, 0, 611, 61));
+        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        addMoney = new QPushButton(horizontalLayoutWidget_3);
+        addMoney->setObjectName(QString::fromUtf8("addMoney"));
+        addMoney->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(addMoney);
+
+        addContact = new QPushButton(horizontalLayoutWidget_3);
+        addContact->setObjectName(QString::fromUtf8("addContact"));
+        addContact->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(addContact);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 949, 21));
+        menubar->setGeometry(QRect(0, 0, 1000, 21));
         menuFichier = new QMenu(menubar);
         menuFichier->setObjectName(QString::fromUtf8("menuFichier"));
         menuOutils = new QMenu(menubar);
@@ -176,12 +193,15 @@ public:
         actionSuper_Utilisateur->setText(QApplication::translate("MainWindow", "Super Utilisateur", 0, QApplication::UnicodeUTF8));
         actionSe_deconnecter->setText(QApplication::translate("MainWindow", "Se deconnecter", 0, QApplication::UnicodeUTF8));
         actionChanger_mot_de_passe_Admin->setText(QApplication::translate("MainWindow", "Changer mot de passe Admin", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "Recherche", 0, QApplication::UnicodeUTF8));
-        rechercheLineEdit->setText(QApplication::translate("MainWindow", "112", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "DI3", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0, QApplication::UnicodeUTF8));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("MainWindow", "Recherche :", 0, QApplication::UnicodeUTF8));
+        rechercheLineEdit->setText(QString());
+        addMoney->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        addContact->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
+        addContact->setText(QString());
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
         menuOutils->setTitle(QApplication::translate("MainWindow", "Outils", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

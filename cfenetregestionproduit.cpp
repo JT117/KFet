@@ -53,13 +53,11 @@ void CFenetreGestionProduit::supprimer()
     {
         int row  = ui->ptwFGPtableProduct->currentRow();
 
-        QTableWidgetItem* item = ui->ptwFGPtableProduct->item( row, 0 );
-
         CProduct* product;
 
         for( int iBoucle =0; iBoucle < listProduct.size(); iBoucle++ )
         {
-            if( listProduct.at( iBoucle )->getId() ==  item->text().toInt() )
+            if( listProduct.at( iBoucle )->getNumLigne() ==  row )
             {
                 product = listProduct.at( iBoucle );
             }
@@ -87,45 +85,52 @@ void CFenetreGestionProduit::supprimer()
 void CFenetreGestionProduit::setupTable()
 {
     disconnect( ui->ptwFGPtableProduct, SIGNAL(cellChanged(int,int)), this, SLOT( celluleChanged(int,int) ) );
+    disconnect(ui->ptwFGPtableProduct, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(celluleClicked(int,int) ));
 
     QStringList header;
-    header << "ID" << "Nom" << "Prix" << "Chemin image";
+    header << "Produit" << "Prix" << "Chemin de l'image";
 
     this->nettoyerListe();
     CGestionBDD::getProductList( listProduct );
 
-    ui->ptwFGPtableProduct->setColumnCount(4);
+    ui->ptwFGPtableProduct->setColumnCount(3);
     ui->ptwFGPtableProduct->setHorizontalHeaderLabels( header );
 
     ui->ptwFGPtableProduct->setRowCount( listProduct.size() );
 
     for( int iBoucle = 0; iBoucle < listProduct.size(); iBoucle++ )
     {
-        QTableWidgetItem* id = new QTableWidgetItem( QString::number( listProduct.at( iBoucle )->getId() ) );
-        ui->ptwFGPtableProduct->setItem( iBoucle, 0, id );
         QTableWidgetItem* nom = new QTableWidgetItem( listProduct.at( iBoucle )->getNom() );
-        ui->ptwFGPtableProduct->setItem( iBoucle, 1, nom );
+        ui->ptwFGPtableProduct->setItem( iBoucle, 0, nom );
         QTableWidgetItem* prix = new QTableWidgetItem( listProduct.at( iBoucle )->getPrix() );
-        ui->ptwFGPtableProduct->setItem( iBoucle, 2, prix );
+        ui->ptwFGPtableProduct->setItem( iBoucle, 1, prix );
         QTableWidgetItem* chemin = new QTableWidgetItem( listProduct.at( iBoucle )->getChemin() );
-        ui->ptwFGPtableProduct->setItem( iBoucle, 3, chemin );
+        ui->ptwFGPtableProduct->setItem( iBoucle, 2, chemin );
+
+        listProduct.at(iBoucle)->setNumLigne( iBoucle );
     }
 
      connect( ui->ptwFGPtableProduct, SIGNAL(cellChanged(int,int)), this, SLOT( celluleChanged(int,int) ) );
+     connect( ui->ptwFGPtableProduct, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(celluleClicked(int,int) ));
 }
 
 void CFenetreGestionProduit::celluleChanged( int row, int y )
 {
-    QTableWidgetItem* id = ui->ptwFGPtableProduct->item( row, 0 );
-    QTableWidgetItem* nom = ui->ptwFGPtableProduct->item( row, 1 );
-    QTableWidgetItem* prix = ui->ptwFGPtableProduct->item( row, 2 );
-    QTableWidgetItem* cheminImage = ui->ptwFGPtableProduct->item( row, 3 );
+    QTableWidgetItem* nom = ui->ptwFGPtableProduct->item( row, 0 );
+    QTableWidgetItem* prix = ui->ptwFGPtableProduct->item( row, 1 );
+    QTableWidgetItem* cheminImage = ui->ptwFGPtableProduct->item( row, 2 );
 
-    CProduct product( id->text().toInt(), nom->text(), prix->text(), cheminImage->text() );
-    CLog::ecrire( "Modification d'un produit : " + id->text() + " " + nom->text() + " " + prix->text() + " " + cheminImage->text() );
-    CGestionBDD::updateProduct( product );
+    for( int i = 0; i < listProduct.size(); i++ )
+    {
+        if( listProduct.at(i)->getNumLigne() == row )
+        {
+            CProduct product( listProduct.at(i)->getId(), nom->text(), prix->text(), cheminImage->text() );
+            CLog::ecrire( "Modification d'un produit : " + QString::number( listProduct.at(i)->getId() ) + " " + nom->text() + " " + prix->text() + " " + cheminImage->text() );
+            CGestionBDD::updateProduct( product );
 
-    this->updateTable();
+            this->updateTable();
+        }
+    }
 }
 
 void CFenetreGestionProduit::keyPressEvent ( QKeyEvent * event )
@@ -135,3 +140,32 @@ void CFenetreGestionProduit::keyPressEvent ( QKeyEvent * event )
         this->supprimer();
     }
 }
+
+void CFenetreGestionProduit::celluleClicked(int x, int y)
+{
+    if( y == 2 )
+    {
+        for( int i = 0; i < listProduct.size(); i++ )
+        {
+            if( listProduct.at(i)->getNumLigne() == x )
+            {
+                QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir", listProduct.at(i)->getChemin() , "Image (*.png *.jpg *.bmp)" );
+
+                if( fileName.isEmpty() == false )
+                {
+                    QFile image( fileName );
+                    QStringList listDecoupeChemin = fileName.split( '/' );
+                    image.copy( QDir::currentPath() + "/systeme/image/" + listDecoupeChemin.last() );
+
+                    listProduct.at(i)->setChemin( "/systeme/image/" + listDecoupeChemin.last() );
+                    CGestionBDD::updateProduct( *(listProduct.at(i)) );
+                }
+
+                i = listProduct.size()+1;
+            }
+        }
+        this->updateTable();
+    }
+}
+
+

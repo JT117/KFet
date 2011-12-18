@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cfenetregestionproduit.h'
 **
-** Created: Sat 10. Dec 19:39:41 2011
+** Created: Sat 17. Dec 22:45:44 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_CFenetreGestionProduit[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,6 +35,7 @@ static const uint qt_meta_data_CFenetreGestionProduit[] = {
       34,   23,   23,   23, 0x0a,
       48,   23,   23,   23, 0x0a,
       64,   60,   23,   23, 0x0a,
+      88,   60,   23,   23, 0x0a,
 
        0        // eod
 };
@@ -42,7 +43,7 @@ static const uint qt_meta_data_CFenetreGestionProduit[] = {
 static const char qt_meta_stringdata_CFenetreGestionProduit[] = {
     "CFenetreGestionProduit\0\0ajouter()\0"
     "updateTable()\0supprimer()\0x,y\0"
-    "celluleChanged(int,int)\0"
+    "celluleChanged(int,int)\0celluleClicked(int,int)\0"
 };
 
 const QMetaObject CFenetreGestionProduit::staticMetaObject = {
@@ -78,9 +79,10 @@ int CFenetreGestionProduit::qt_metacall(QMetaObject::Call _c, int _id, void **_a
         case 1: updateTable(); break;
         case 2: supprimer(); break;
         case 3: celluleChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 4: celluleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }

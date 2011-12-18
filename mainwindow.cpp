@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->actionSe_deconnecter->setVisible(false);
     ui->actionChanger_mot_de_passe_Admin->setVisible(false);
 
+    ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
+    ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ));
+
     CLog::ecrire( "--------------------------------------------------------------");
     CLog::ecrire( "Ouverture de l'application" );
 }
@@ -107,19 +110,47 @@ void MainWindow::construirePanneauClient()
     header << "Nom" << "Prénom" << "Promo" << "Dette";
     etuTable->setColumnCount(4);
     etuTable->setHorizontalHeaderLabels( header );
+    etuTable->setColumnWidth(0,126);
+    etuTable->setColumnWidth(1,126);
 
     CGestionBDD::getClientList( listClient );
     etuTable->setRowCount( listClient.size() );
 
     for( int i = 0; i < listClient.size(); i++ )
     {
+        QColor couleur( 255, 255, 255 );
+
+        if( listClient.at(i)->getDette() < 10 )
+        {
+            couleur.setRgb( 104, 255, 122 );
+        }
+        else
+        {
+            couleur.setRgb( 255, 95, 25 );
+        }
+
         QTableWidgetItem* item = new QTableWidgetItem( listClient.at(i)->getNom() );
+        item->setBackgroundColor( couleur );
+        item->setTextAlignment(Qt::AlignCenter);
+        item->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
         etuTable->setItem(i,0, item );
+
         QTableWidgetItem* item2 = new QTableWidgetItem( listClient.at(i)->getPrenom() );
+        item2->setBackgroundColor( couleur );
+        item2->setTextAlignment(Qt::AlignCenter);
+        item2->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
         etuTable->setItem(i,1, item2 );
+
         QTableWidgetItem* item3 = new QTableWidgetItem( listClient.at(i)->getPromo() );
+        item3->setBackgroundColor( couleur );
+        item3->setTextAlignment( Qt::AlignCenter );
+        item3->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
         etuTable->setItem(i,2, item3 );
+
         QTableWidgetItem* item4 = new QTableWidgetItem( QString::number( listClient.at(i)->getDette() ) );
+        item4->setBackgroundColor( couleur );
+        item4->setTextAlignment(Qt::AlignCenter);
+        item4->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
         etuTable->setItem(i,3, item4 );
     }
 }
@@ -134,9 +165,10 @@ void MainWindow::construirePanneauProduit()
         QToolButton* bouton = new QToolButton();
         bouton->setIcon( QIcon( QDir::currentPath()+listProduct[iBoucle]->getChemin() ) );
         bouton->setText( listProduct[iBoucle]->getNom()+" "+listProduct[iBoucle]->getPrix()+ QString(8364) );
-        bouton->setIconSize(QSize(64,64));
+        bouton->setIconSize(QSize(72,72));
         bouton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         bouton->setFont( QFont( "Raavi", 12, QFont::Bold ) );
+        bouton->setFixedSize( 160, 110 );
         listBouton.append(bouton);
 
         ui->gridLayout_6->addWidget( bouton, ligne, iBoucle%3, 1, 1 );

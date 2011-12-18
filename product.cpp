@@ -2,10 +2,12 @@
 
 CProduct::CProduct()
 {
+    iPROnumLigne = -1;
 }
 
 CProduct::CProduct( int id, QString nom, QString prix, QString cheminImage ) : iPROid( id ), sPROnom( nom ), sPROprix( prix ), sPROcheminImage( cheminImage )
 {
+    iPROnumLigne = -1;
 }
 
 void CProduct::afficher()
@@ -15,4 +17,14 @@ void CProduct::afficher()
 
 CProduct::~CProduct()
 {
+}
+
+void CProduct::setNumLigne(int i)
+{
+    iPROnumLigne = i;
+}
+
+void CProduct::setChemin(QString path)
+{
+    sPROcheminImage = path;
 }
