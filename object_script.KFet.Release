@@ -11,9 +11,13 @@ INPUT(
 ./release/cfenetrelogin.o
 ./release/fenetrechangermdp.o
 ./release/clog.o
+./release/cfenetreajoutclient.o
+./release/cfenetreapprovisionnement.o
 ./release/moc_mainwindow.o
 ./release/moc_cfenetreajoutproduit.o
 ./release/moc_cfenetregestionproduit.o
 ./release/moc_cfenetrelogin.o
 ./release/moc_fenetrechangermdp.o
+./release/moc_cfenetreajoutclient.o
+./release/moc_cfenetreapprovisionnement.o
 );

@@ -2,6 +2,8 @@
 
 CClient::CClient()
 {
+    iCLInumLigne = -1;
+    fCLIdette = 0;
 }
 
 CClient::CClient( int id, QString nom, QString prenom, float dette, QString promo, QString droit )
@@ -12,6 +14,7 @@ CClient::CClient( int id, QString nom, QString prenom, float dette, QString prom
     fCLIdette = dette;
     sCLIpromo = promo;
     sCLIdroit = droit;
+    iCLInumLigne = -1;
 }
 
 void CClient::setID(int id)
@@ -52,4 +55,24 @@ int CClient::getID()
 float CClient::getDette()
 {
     return fCLIdette;
+}
+
+int CClient::getNumLigne()const
+{
+    return iCLInumLigne;
+}
+
+void CClient::setNumLigne(int row)
+{
+    iCLInumLigne = row;
+}
+
+void CClient::ajouterDette( double somme )
+{
+    fCLIdette += somme;
+}
+
+void CClient::ajouterApprovisionnement( double somme )
+{
+    fCLIdette -= somme;
 }

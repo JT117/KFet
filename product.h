@@ -14,12 +14,14 @@ public:
     void afficher();
     void setNumLigne(int i );
     void setChemin( QString path );
+    void setNumBouton( int i );
 
     inline QString getNom()const { return sPROnom; }
     inline QString getPrix()const { return sPROprix; }
     inline QString getChemin()const { return sPROcheminImage; }
     inline int getId()const { return iPROid; }
     inline int getNumLigne()const { return iPROnumLigne; }
+    inline int getNumBouton()const { return iPROnumBouton; }
 
 private:
     int iPROid;
@@ -27,6 +29,7 @@ private:
     QString sPROprix;
     QString sPROcheminImage;
     int iPROnumLigne;
+    int iPROnumBouton;
 
 };
 

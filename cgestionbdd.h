@@ -31,6 +31,10 @@ public:
     static bool identification( QString password );
     static void changerMDP( QString newPassword );
 
+    static int addDate( QString date, QString time );
+    static void addApprovisionnement( int idCli, int idDate, double value );
+    static void addDette( int idCli, int idPro, int idDate, double somme );
+
 private:
     static QString sGESnomBDD;
     static QString sGEShostName;

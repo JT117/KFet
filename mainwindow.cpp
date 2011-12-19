@@ -20,13 +20,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->actionSuper_Utilisateur, SIGNAL(triggered()), this, SLOT( ouvrirLogin() ) );
     connect( ui->actionSe_deconnecter, SIGNAL(triggered()), this, SLOT( rendreUser() ) );
     connect( ui->actionChanger_mot_de_passe_Admin, SIGNAL(triggered()), this, SLOT(ouvrirChangerMDP()) );
+    connect( ui->addContact, SIGNAL(clicked()), this, SLOT(ouvrirAjoutClient()) );
+    connect( etuTable, SIGNAL(cellClicked(int,int)), this, SLOT(selectionnerLigne(int,int)) );
+    connect( ui->addMoney, SIGNAL(clicked()), this, SLOT(ouvrirApproviosionnement()) );
+    connect( ui->delContact, SIGNAL(clicked()), this, SLOT(supprimerClient()) );
 
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSe_deconnecter->setVisible(false);
     ui->actionChanger_mot_de_passe_Admin->setVisible(false);
+    ui->delContact->setEnabled( false );
+    ui->subMoney->setEnabled( false );
 
     ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
-    ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ));
+    ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" )); 
+    ui->delContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/del_user.png" ));
+    ui->subMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/sub_money.png" ));
 
     CLog::ecrire( "--------------------------------------------------------------");
     CLog::ecrire( "Ouverture de l'application" );
@@ -39,15 +47,15 @@ MainWindow::~MainWindow()
 
     for( int i = 0; i < listProduct.size(); i++ )
     {
-        delete listProduct.at(i);
+        delete listProduct[i];
     }
     for( int i = 0; i < listBouton.size(); i++ )
     {
-        delete listBouton.at(i);
+        delete listBouton[i];
     }
     for( int i = 0; i < listClient.size(); i++ )
     {
-        delete listClient.at(i);
+        delete listClient[i];
     }
     CLog::ecrire( "Fermeture de l'application" );
     CLog::ecrire( "--------------------------------------------------------------");
@@ -79,6 +87,8 @@ void MainWindow::rendreAdmin()
     ui->actionSuper_Utilisateur->setVisible(false);
     ui->actionSe_deconnecter->setVisible(true);
     ui->actionChanger_mot_de_passe_Admin->setVisible(true);
+    ui->delContact->setEnabled( true );
+    ui->subMoney->setEnabled( true );
 }
 
 void MainWindow::rendreUser()
@@ -89,19 +99,40 @@ void MainWindow::rendreUser()
     ui->actionSuper_Utilisateur->setVisible(true);
     ui->actionSe_deconnecter->setVisible(false);
     ui->actionChanger_mot_de_passe_Admin->setVisible(false);
+    ui->delContact->setEnabled( false );
+    ui->subMoney->setEnabled( false );
 }
 
 void MainWindow::updateProduit()
 {
+    for( int i = 0; i < listProduct.size(); i++ )
+    {
+        delete listProduct.at(i);
+    }
+
     listProduct.clear();
+
     for( int i = 0; i < listBouton.size(); i++ )
     {
+        disconnect( listBouton.at(i), SIGNAL(clicked()), this, SLOT(ajouterEnDette()) );
         ui->gridLayout_6->removeWidget( listBouton.at(i) );
-        listBouton.at(i)->~QToolButton();
+        delete listBouton.at(i);
     }
     listBouton.clear();
 
     construirePanneauProduit();
+}
+
+void MainWindow::updateClient()
+{
+    for( int i = 0; i < listClient.size(); i++ )
+    {
+        delete listClient.at(i);
+    }
+
+    listClient.clear();
+    etuTable->clear();
+    this->construirePanneauClient();
 }
 
 void MainWindow::construirePanneauClient()
@@ -118,6 +149,8 @@ void MainWindow::construirePanneauClient()
 
     for( int i = 0; i < listClient.size(); i++ )
     {
+        listClient.at(i)->setNumLigne(i);
+
         QColor couleur( 255, 255, 255 );
 
         if( listClient.at(i)->getDette() < 10 )
@@ -162,6 +195,8 @@ void MainWindow::construirePanneauProduit()
     int ligne = 0;
     for( int iBoucle = 0; iBoucle < listProduct.size(); iBoucle++ )
     {
+        listProduct.at(iBoucle)->setNumBouton(iBoucle);
+
         QToolButton* bouton = new QToolButton();
         bouton->setIcon( QIcon( QDir::currentPath()+listProduct[iBoucle]->getChemin() ) );
         bouton->setText( listProduct[iBoucle]->getNom()+" "+listProduct[iBoucle]->getPrix()+ QString(8364) );
@@ -169,6 +204,7 @@ void MainWindow::construirePanneauProduit()
         bouton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         bouton->setFont( QFont( "Raavi", 12, QFont::Bold ) );
         bouton->setFixedSize( 160, 110 );
+        connect( bouton, SIGNAL(clicked()), this, SLOT(ajouterEnDette()) );
         listBouton.append(bouton);
 
         ui->gridLayout_6->addWidget( bouton, ligne, iBoucle%3, 1, 1 );
@@ -179,3 +215,159 @@ void MainWindow::construirePanneauProduit()
         }
     }
 }
+
+void MainWindow::ouvrirAjoutClient()
+{
+    CFenetreAjoutClient fenetre(this, this);
+    fenetre.exec();
+}
+
+void MainWindow::selectionnerLigne(int row, int column)
+{
+    int nbColumn = etuTable->columnCount();
+
+    etuTable->clearSelection();
+
+    for( int i = 0; i < nbColumn; i++ )
+    {
+        QTableWidgetItem* widget = etuTable->item( row, i );
+        widget->setSelected( true );
+    }
+}
+
+bool MainWindow::clientSelectionner()
+{
+    QList<QTableWidgetItem*> listItem = etuTable->selectedItems();
+
+    return !listItem.isEmpty();
+}
+
+CClient* MainWindow::getSelectedClient()
+{
+     QList<QTableWidgetItem*> listItem = etuTable->selectedItems();
+
+     if( !listItem.isEmpty() )
+     {
+         int row = listItem.at(0)->row();
+
+         for( int i = 0; i < listClient.size(); i++ )
+         {
+             if( row == listClient.at(i)->getNumLigne() )
+             {
+                 return (listClient[i]);
+             }
+         }
+     }
+     return NULL;
+}
+
+void MainWindow::ouvrirApproviosionnement()
+{
+    if( this->clientSelectionner() )
+    {
+        CClient* client = this->getSelectedClient();
+        CFenetreApprovisionnement fenetre(this, client, this);
+        fenetre.exec();
+    }
+    else
+    {
+        QMessageBox::warning(this, "KFet", "Veuillez d'abord selectionner un client dans la liste" );
+    }
+}
+
+void MainWindow::ajouterEnDette()
+{
+    if( this->clientSelectionner() )
+    {
+        QObject* object = QObject::sender();
+        QToolButton* bouton = (QToolButton*)object;
+        int numBouton = -1;
+
+        for( int i = 0; i < listBouton.size(); i++ )
+        {
+            if( bouton == listBouton[i] )
+            {
+                numBouton = i;
+            }
+        }
+
+        CProduct* produit = NULL;
+
+        for( int i = 0; i < listProduct.size(); i++ )
+        {
+            if( numBouton == listProduct.at(i)->getNumBouton() )
+            {
+                produit = listProduct[i];
+            }
+        }
+
+        if( produit != NULL )
+        {
+            CClient* client = getSelectedClient();
+
+            QMessageBox msgBox;
+            msgBox.setText("Etes-vous sûr de vouloir ajouter en dette un " + produit->getNom() +" soit " + produit->getPrix() + " à "
+                           + client->getNom() + " " + client->getPrenom() );
+            msgBox.setInformativeText( produit->getPrix() + " " + client->getPrenom() + " " + client->getNom() );
+            msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel);
+            msgBox.setDefaultButton(QMessageBox::Ok);
+            msgBox.setIcon( QMessageBox::Question );
+            int ret = msgBox.exec();
+
+            if( ret == QMessageBox::Ok )
+            {
+                QDate date = QDate::currentDate();
+                QTime time = QTime::currentTime();
+                QString dateString = date.toString( Qt::ISODate );
+                QString timeString = time.toString();
+
+                int idDate = CGestionBDD::addDate( dateString, timeString );
+                int idClient = client->getID();
+                int idProduct = produit->getId();
+
+                CGestionBDD::addDette( idClient, idProduct, idDate, produit->getPrix().toDouble() );
+
+                client->ajouterDette( produit->getPrix().toDouble() );
+                CGestionBDD::updateClient( *client );
+
+                CLog::ecrire( "Ajout en dette : " + produit->getNom() + " " + produit->getPrix() + " à " + client->getNom() + " " + client->getPrenom() );
+
+                this->updateClient();
+            }
+        }
+    }
+    else
+    {
+        QMessageBox::warning( this, "KFet", "Veuillez selectionner un client en premier");
+    }
+
+}
+
+void MainWindow::supprimerClient()
+{
+    if( clientSelectionner() )
+    {
+        CClient* client = getSelectedClient();
+
+        QMessageBox msgBox;
+        msgBox.setText("Etes-vous sûr de vouloir supprimer définitivement" + client->getNom() + " " + client->getPrenom() + " ?" );
+        msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        msgBox.setIcon( QMessageBox::Question );
+        int ret = msgBox.exec();
+
+        if( ret == QMessageBox::Ok )
+        {
+            CLog::ecrire( "Suppression du client : " + client->getNom() + " " + client->getPrenom() + " " + client->getDette() + " " +
+                          client->getPromo() + " " + client->getDroit() + " " + client->getID() );
+            CGestionBDD::removeClient( *client );
+            this->updateClient();
+        }
+    }
+    else
+    {
+        QMessageBox::warning( this, "KFet", "Veuillez selectionner un client en premier");
+    }
+}
+
+

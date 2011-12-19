@@ -11,9 +11,13 @@ INPUT(
 ./debug/cfenetrelogin.o
 ./debug/fenetrechangermdp.o
 ./debug/clog.o
+./debug/cfenetreajoutclient.o
+./debug/cfenetreapprovisionnement.o
 ./debug/moc_mainwindow.o
 ./debug/moc_cfenetreajoutproduit.o
 ./debug/moc_cfenetregestionproduit.o
 ./debug/moc_cfenetrelogin.o
 ./debug/moc_fenetrechangermdp.o
+./debug/moc_cfenetreajoutclient.o
+./debug/moc_cfenetreapprovisionnement.o
 );

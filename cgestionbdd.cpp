@@ -87,7 +87,7 @@ void CGestionBDD::updateProduct( CProduct& product )
     {
         QSqlQuery query;
         query.exec( "UPDATE PRODUCT SET nom = '" + product.getNom() + "', prix = '" + product.getPrix() + "', cheminImage = '"+ product.getChemin() +
-                    "'WHERE id = '" + QString::number( product.getId() ) + "';" );
+                    "' WHERE id = '" + QString::number( product.getId() ) + "';" );
         db.close();
     }
     else
@@ -180,7 +180,7 @@ void CGestionBDD::updateClient( CClient& client )
     {
         QSqlQuery query;
         query.exec( "UPDATE CLIENT SET nom = '" + client.getNom() + "', prenom = '" + client.getPrenom() + "', dette = '"+ QString::number(client.getDette())  + "', promo = '" + client.getPromo() + "', droit = '" + client.getDroit() +
-                    "'WHERE id = ' " + QString::number( client.getID() ) + "';" );
+                    "' WHERE id = '"+ QString::number( client.getID() ) + "';" );
         db.close();
     }
     else
@@ -199,7 +199,7 @@ bool CGestionBDD::identification(QString username, QString password)
     if( baseOuverte )
     {
         QSqlQuery query;
-        query.exec( "SELECT username, password FROM ADMIN;" ) ;
+        query.exec( "SELECT username, password FROM ADMIN;" );
 
         while( query.next() )
         {
@@ -224,6 +224,7 @@ bool CGestionBDD::identification(QString username, QString password)
     }
 }
 
+//***************************Gestion Admin******************************************
 bool CGestionBDD::identification( QString password)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
@@ -271,6 +272,69 @@ void CGestionBDD::changerMDP(QString newPassword)
         QByteArray cryptedPass = QCryptographicHash::hash( newPassword.toUtf8(), QCryptographicHash::Md5 );
         query.exec( "UPDATE ADMIN SET password = '" + cryptedPass.toHex() + "' WHERE id = '1';");
 
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
+//**********************Gestion Date********************************
+
+int CGestionBDD::addDate(QString date, QString time)
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setHostName( sGEShostName );
+    db.setDatabaseName( sGESnomBDD );
+    bool baseOuverte = db.open();
+
+    if( baseOuverte )
+    {
+        QSqlQuery query;
+        query.exec( "INSERT INTO Date( date, time )VALUES ('" + date + "', '" + time + "');");
+        return query.lastInsertId().toInt();
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+    }
+    return -1;
+}
+
+void CGestionBDD::addApprovisionnement(int idCli, int idDate, double value)
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setHostName( sGEShostName );
+    db.setDatabaseName( sGESnomBDD );
+    bool baseOuverte = db.open();
+
+    if( baseOuverte )
+    {
+        QSqlQuery query;
+        query.exec( "INSERT INTO Approvisionne( idCli, idDate, somme )VALUES ('" + QString::number( idCli ) + "', '"
+                    + QString::number( idDate ) + "', '"+ QString::number(value) +"' );");
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
+void CGestionBDD::addDette(int idCli, int idPro, int idDate, double somme)
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setHostName( sGEShostName );
+    db.setDatabaseName( sGESnomBDD );
+    bool baseOuverte = db.open();
+
+    if( baseOuverte )
+    {
+        QSqlQuery query;
+        query.exec( "INSERT INTO EnDette( idCli, idDate, somme, idPro )VALUES ('" + QString::number( idCli ) + "', '"
+                    + QString::number( idDate ) + "', '"+ QString::number(somme) +"', '"+ QString::number(idPro) +"' );");
         db.close();
     }
     else

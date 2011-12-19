@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sat 17. Dec 22:45:41 2011
+** Created: Mon 19. Dec 17:15:01 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,7 +35,13 @@ static const uint qt_meta_data_MainWindow[] = {
       35,   11,   11,   11, 0x0a,
       49,   11,   11,   11, 0x0a,
       68,   11,   11,   11, 0x0a,
-      81,   11,   11,   11, 0x0a,
+      88,   11,   11,   11, 0x0a,
+     115,   11,   11,   11, 0x0a,
+     128,   11,   11,   11, 0x0a,
+     144,   11,   11,   11, 0x0a,
+     170,  159,   11,   11, 0x0a,
+     197,   11,   11,   11, 0x0a,
+     214,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -43,7 +49,11 @@ static const uint qt_meta_data_MainWindow[] = {
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0ouvrirGestionProduit()\0"
     "ouvrirLogin()\0ouvrirChangerMDP()\0"
+    "ouvrirAjoutClient()\0ouvrirApproviosionnement()\0"
     "rendreUser()\0updateProduit()\0"
+    "updateClient()\0row,column\0"
+    "selectionnerLigne(int,int)\0ajouterEnDette()\0"
+    "supprimerClient()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -78,11 +88,17 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: ouvrirGestionProduit(); break;
         case 1: ouvrirLogin(); break;
         case 2: ouvrirChangerMDP(); break;
-        case 3: rendreUser(); break;
-        case 4: updateProduit(); break;
+        case 3: ouvrirAjoutClient(); break;
+        case 4: ouvrirApproviosionnement(); break;
+        case 5: rendreUser(); break;
+        case 6: updateProduit(); break;
+        case 7: updateClient(); break;
+        case 8: selectionnerLigne((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 9: ajouterEnDette(); break;
+        case 10: supprimerClient(); break;
         default: ;
         }
-        _id -= 5;
+        _id -= 11;
     }
     return _id;
 }

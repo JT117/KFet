@@ -17,6 +17,10 @@ public:
     float getDette();
     void setID( int id );
     void setNom( QString nom);
+    void setNumLigne( int row );
+    int getNumLigne()const;
+    void ajouterDette(double somme);
+    void ajouterApprovisionnement( double somme );
 
 protected:
     QString sCLInom;

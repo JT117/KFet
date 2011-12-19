@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat 17. Dec 23:30:17 2011
+** Created: Mon 19. Dec 17:23:40 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QFrame>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -54,7 +55,10 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *addMoney;
+    QPushButton *subMoney;
+    QFrame *line;
     QPushButton *addContact;
+    QPushButton *delContact;
     QMenuBar *menubar;
     QMenu *menuFichier;
     QMenu *menuOutils;
@@ -152,11 +156,30 @@ public:
 
         horizontalLayout_2->addWidget(addMoney);
 
+        subMoney = new QPushButton(horizontalLayoutWidget_3);
+        subMoney->setObjectName(QString::fromUtf8("subMoney"));
+        subMoney->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(subMoney);
+
+        line = new QFrame(horizontalLayoutWidget_3);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line);
+
         addContact = new QPushButton(horizontalLayoutWidget_3);
         addContact->setObjectName(QString::fromUtf8("addContact"));
         addContact->setIconSize(QSize(48, 48));
 
         horizontalLayout_2->addWidget(addContact);
+
+        delContact = new QPushButton(horizontalLayoutWidget_3);
+        delContact->setObjectName(QString::fromUtf8("delContact"));
+        delContact->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(delContact);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -198,10 +221,12 @@ public:
         label->setText(QApplication::translate("MainWindow", "Recherche :", 0, QApplication::UnicodeUTF8));
         rechercheLineEdit->setText(QString());
         addMoney->setText(QString());
+        subMoney->setText(QString());
 #ifndef QT_NO_TOOLTIP
         addContact->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         addContact->setText(QString());
+        delContact->setText(QString());
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
         menuOutils->setTitle(QApplication::translate("MainWindow", "Outils", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
