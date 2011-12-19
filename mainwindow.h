@@ -20,6 +20,7 @@
 #include "clog.h"
 #include "cfenetreajoutclient.h"
 #include "cfenetreapprovisionnement.h"
+#include "cfenetremiseendette.h"
 
 namespace Ui {
     class MainWindow;
@@ -42,6 +43,7 @@ public slots:
     void ouvrirChangerMDP();
     void ouvrirAjoutClient();
     void ouvrirApproviosionnement();
+    void ouvrirAjoutEnDette();
     void rendreUser();
     void updateProduit();
     void updateClient();

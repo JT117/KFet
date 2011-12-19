@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( etuTable, SIGNAL(cellClicked(int,int)), this, SLOT(selectionnerLigne(int,int)) );
     connect( ui->addMoney, SIGNAL(clicked()), this, SLOT(ouvrirApproviosionnement()) );
     connect( ui->delContact, SIGNAL(clicked()), this, SLOT(supprimerClient()) );
+    connect( ui->subMoney, SIGNAL(clicked()), this, SLOT(ouvrirAjoutEnDette()) );
 
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSe_deconnecter->setVisible(false);
@@ -267,6 +268,20 @@ void MainWindow::ouvrirApproviosionnement()
     {
         CClient* client = this->getSelectedClient();
         CFenetreApprovisionnement fenetre(this, client, this);
+        fenetre.exec();
+    }
+    else
+    {
+        QMessageBox::warning(this, "KFet", "Veuillez d'abord selectionner un client dans la liste" );
+    }
+}
+
+void MainWindow::ouvrirAjoutEnDette()
+{
+    if( this->clientSelectionner() )
+    {
+        CClient* client = this->getSelectedClient();
+        CFenetreMiseEnDette fenetre(this, client, this);
         fenetre.exec();
     }
     else
