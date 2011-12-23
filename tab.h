@@ -4,15 +4,32 @@
 #include <QList>
 #include <QStringList>
 #include <QString>
+#include <QTabWidget>
+#include <QTableWidget>
+#include <QVBoxLayout>
+#include <QHeaderView>
 
-class CTab
+#include "client.h"
+#include "cgestionbdd.h"
+
+class CTab : public QWidget
 {
 public:
     CTab();
+    CTab( QString nom1 );
+    ~CTab();
+
+    bool clientSelectionner();
+    CClient* getSelectedClient();
+    void updateClient();
+
 private:
-    QString sTABnom;
-    QStringList slTABnomColonne;
-    QList<int> ilTABid;
+    QString nom;
+    QList<CClient*> listClient;
+    QTableWidget* etuTable;
+
+    void setupClient();
+
 };
 
 #endif // TAB_H

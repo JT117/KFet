@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreapprovisionnement.ui'
 **
-** Created: Mon 19. Dec 10:48:19 2011
+** Created: Tue 20. Dec 15:38:33 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

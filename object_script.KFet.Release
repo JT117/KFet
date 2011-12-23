@@ -2,7 +2,6 @@ INPUT(
 ./release/main.o
 ./release/mainwindow.o
 ./release/client.o
-./release/etudiant.o
 ./release/product.o
 ./release/tab.o
 ./release/cfenetreajoutproduit.o

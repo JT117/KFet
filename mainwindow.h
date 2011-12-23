@@ -10,6 +10,8 @@
 #include <QMessageBox>
 #include <QList>
 #include <QVariant>
+#include <QHelpSearchEngine>
+#include <QHelpSearchQueryWidget>
 
 #include "cfenetregestionproduit.h"
 #include "product.h"
@@ -21,6 +23,7 @@
 #include "cfenetreajoutclient.h"
 #include "cfenetreapprovisionnement.h"
 #include "cfenetremiseendette.h"
+#include "tab.h"
 
 namespace Ui {
     class MainWindow;
@@ -36,6 +39,7 @@ public:
     void rendreAdmin();
     bool clientSelectionner();
     CClient* getSelectedClient();
+    void updateAllClient();
 
 public slots:
     void ouvrirGestionProduit();
@@ -47,20 +51,21 @@ public slots:
     void rendreUser();
     void updateProduit();
     void updateClient();
-    void selectionnerLigne(int row, int column );
     void ajouterEnDette();
     void supprimerClient();
+    void recherche(QString text );
 
 private:
     Ui::MainWindow *ui;
     QTableWidget* etuTable;
     QList<CProduct*> listProduct;
     QList<QToolButton*> listBouton;
-    QList<CClient*> listClient;
+    QList<CTab*> listTab;
+
+    QHelpSearchQueryWidget* helpSearch;
     bool admin;
 
     void construirePanneauProduit();
-    void construirePanneauClient();
 };
 
 #endif // MAINWINDOW_H

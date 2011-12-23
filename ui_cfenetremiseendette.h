@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetremiseendette.ui'
 **
-** Created: Mon 19. Dec 17:39:32 2011
+** Created: Tue 20. Dec 15:38:33 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -45,10 +45,10 @@ public:
     {
         if (CFenetreMiseEnDette->objectName().isEmpty())
             CFenetreMiseEnDette->setObjectName(QString::fromUtf8("CFenetreMiseEnDette"));
-        CFenetreMiseEnDette->resize(350, 121);
+        CFenetreMiseEnDette->resize(363, 121);
         verticalLayoutWidget = new QWidget(CFenetreMiseEnDette);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 341, 110));
+        verticalLayoutWidget->setGeometry(QRect(10, 0, 341, 110));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);

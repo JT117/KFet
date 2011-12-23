@@ -2,22 +2,37 @@
 
 QString CGestionBDD::sGESnomBDD = "kfet";
 QString CGestionBDD::sGEShostName = "localhost";
+QSqlDatabase CGestionBDD::db = QSqlDatabase::database();
 
 CGestionBDD::CGestionBDD()
 {
 }
 
+bool CGestionBDD::connectionBDD()
+{
+    if( !QSqlDatabase::connectionNames().contains( "KFET" ) )
+    {
+        db = QSqlDatabase::addDatabase("QSQLITE", "KFET");
+        db.setHostName( sGEShostName );
+        db.setDatabaseName( sGESnomBDD );
+    }
+
+    bool ouvert = db.open();
+
+    if( !ouvert )
+    {
+        QMessageBox::warning( NULL, "KFet", db.lastError().text() );
+    }
+
+    return ouvert;
+}
+
 //******************** Gestion des produits ************************************
 void CGestionBDD::getProductList( QList<CProduct*>& listProduct )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "SELECT * FROM PRODUCT;");
 
         while( query.next() )
@@ -31,7 +46,7 @@ void CGestionBDD::getProductList( QList<CProduct*>& listProduct )
             listProduct.append( product );
         }
 
-        db.close();
+       db.close();
     }
     else
     {
@@ -41,14 +56,9 @@ void CGestionBDD::getProductList( QList<CProduct*>& listProduct )
 
 void CGestionBDD::addProduct( CProduct& product )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "INSERT INTO Product (nom, prix, cheminImage ) VALUES ( '" + product.getNom() + "', '" + product.getPrix() + "', '"+ product.getChemin() + "' );" );
         db.close();
     }
@@ -60,14 +70,9 @@ void CGestionBDD::addProduct( CProduct& product )
 
 void CGestionBDD::removeProduct( CProduct& product )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "DELETE FROM PRODUCT WHERE id = '"+ QString::number( product.getId() ) +"';" );
         db.close();    }
     else
@@ -78,14 +83,9 @@ void CGestionBDD::removeProduct( CProduct& product )
 
 void CGestionBDD::updateProduct( CProduct& product )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "UPDATE PRODUCT SET nom = '" + product.getNom() + "', prix = '" + product.getPrix() + "', cheminImage = '"+ product.getChemin() +
                     "' WHERE id = '" + QString::number( product.getId() ) + "';" );
         db.close();
@@ -100,14 +100,9 @@ void CGestionBDD::updateProduct( CProduct& product )
 
 void CGestionBDD::getClientList( QList<CClient*>& listClient )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "SELECT * FROM CLIENT;");
 
         while( query.next() )
@@ -123,7 +118,35 @@ void CGestionBDD::getClientList( QList<CClient*>& listClient )
             listClient.append( client );
         }
 
-        db.close();
+       db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "KFet", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
+void CGestionBDD::getClientList( QList<CClient*>& listClient, QString critere )
+{
+    if( CGestionBDD::connectionBDD() )
+    {
+        QSqlQuery query(db);
+        query.exec( "SELECT * FROM CLIENT WHERE promo = '"+ critere +"';");
+
+        while( query.next() )
+        {
+            int id = query.value(0).toInt();                                                  // on recupere l'id ne pas oublier la convertion dans le bon type
+            QString nom = query.value(1).toString();                                          // recuperation du nom
+            QString prenom = query.value(2).toString();                                       // recuperation du prix
+            float dette = query.value(3).toFloat();
+            QString promo = query.value(4).toString();
+            QString droit = query.value(5).toString();
+
+            CClient* client = new CClient( id, nom, prenom, dette, promo, droit );
+            listClient.append( client );
+        }
+
+       db.close();
     }
     else
     {
@@ -133,14 +156,9 @@ void CGestionBDD::getClientList( QList<CClient*>& listClient )
 
 void CGestionBDD::addClient( CClient& client )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "INSERT INTO CLIENT (nom, prenom, dette, promo, droit ) VALUES ( '" + client.getNom() + "', '" + client.getPrenom() + "', '"+ QString::number( client.getDette() ) + "', '"+ client.getPromo()+ "', '" + client.getDroit() + "' );" );
         client.setID( query.lastInsertId().toInt() );
         db.close();
@@ -153,14 +171,9 @@ void CGestionBDD::addClient( CClient& client )
 
 void CGestionBDD::removeClient( CClient& client )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "DELETE FROM CLIENT WHERE id = '"+ QString::number( client.getID() ) +"';" );
         db.close();    }
     else
@@ -171,14 +184,9 @@ void CGestionBDD::removeClient( CClient& client )
 
 void CGestionBDD::updateClient( CClient& client )
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "UPDATE CLIENT SET nom = '" + client.getNom() + "', prenom = '" + client.getPrenom() + "', dette = '"+ QString::number(client.getDette())  + "', promo = '" + client.getPromo() + "', droit = '" + client.getDroit() +
                     "' WHERE id = '"+ QString::number( client.getID() ) + "';" );
         db.close();
@@ -191,14 +199,9 @@ void CGestionBDD::updateClient( CClient& client )
 
 bool CGestionBDD::identification(QString username, QString password)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "SELECT username, password FROM ADMIN;" );
 
         while( query.next() )
@@ -227,14 +230,9 @@ bool CGestionBDD::identification(QString username, QString password)
 //***************************Gestion Admin******************************************
 bool CGestionBDD::identification( QString password)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "SELECT password FROM ADMIN;" ) ;
 
         while( query.next() )
@@ -261,14 +259,9 @@ bool CGestionBDD::identification( QString password)
 
 void CGestionBDD::changerMDP(QString newPassword)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         QByteArray cryptedPass = QCryptographicHash::hash( newPassword.toUtf8(), QCryptographicHash::Md5 );
         query.exec( "UPDATE ADMIN SET password = '" + cryptedPass.toHex() + "' WHERE id = '1';");
 
@@ -284,14 +277,9 @@ void CGestionBDD::changerMDP(QString newPassword)
 
 int CGestionBDD::addDate(QString date, QString time)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "INSERT INTO Date( date, time )VALUES ('" + date + "', '" + time + "');");
         return query.lastInsertId().toInt();
         db.close();
@@ -305,14 +293,9 @@ int CGestionBDD::addDate(QString date, QString time)
 
 void CGestionBDD::addApprovisionnement(int idCli, int idDate, double value)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
+        QSqlQuery query(db);
         query.exec( "INSERT INTO Approvisionne( idCli, idDate, somme )VALUES ('" + QString::number( idCli ) + "', '"
                     + QString::number( idDate ) + "', '"+ QString::number(value) +"' );");
         db.close();
@@ -325,15 +308,10 @@ void CGestionBDD::addApprovisionnement(int idCli, int idDate, double value)
 
 void CGestionBDD::addDette(int idCli, int idPro, int idDate, double somme)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName( sGEShostName );
-    db.setDatabaseName( sGESnomBDD );
-    bool baseOuverte = db.open();
-
-    if( baseOuverte )
+    if( CGestionBDD::connectionBDD() )
     {
-        QSqlQuery query;
-        query.exec( "INSERT INTO EnDette( idCli, idDate, somme, idPro )VALUES ('" + QString::number( idCli ) + "', '"
+        QSqlQuery query(db);
+        query.exec( "INSERT INTO EnDette( idcli, iddate, somme, idprod ) VALUES ('" + QString::number( idCli ) + "', '"
                     + QString::number( idDate ) + "', '"+ QString::number(somme) +"', '"+ QString::number(idPro) +"' );");
         db.close();
     }

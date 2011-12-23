@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cfenetreajoutproduit.h'
 **
-** Created: Mon 19. Dec 16:53:59 2011
+** Created: Fri 23. Dec 15:31:38 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

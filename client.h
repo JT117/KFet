@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QString>
+#include <QTableWidgetItem>
 
 class CClient
 {
@@ -22,6 +23,8 @@ public:
     void ajouterDette(double somme);
     void ajouterApprovisionnement( double somme );
 
+    inline QList<QTableWidgetItem*>& getListItem() { return listItem; }
+
 protected:
     QString sCLInom;
     QString sCLIprenom;
@@ -30,6 +33,7 @@ protected:
     QString sCLIpromo;
     QString sCLIdroit;
     int iCLInumLigne;
+    QList<QTableWidgetItem*> listItem;
 };
 
 #endif // CLIENT_H

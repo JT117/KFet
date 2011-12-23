@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon 19. Dec 17:23:40 2011
+** Created: Fri 23. Dec 15:59:02 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -19,7 +19,6 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
@@ -39,18 +38,18 @@ public:
     QAction *actionSuper_Utilisateur;
     QAction *actionSe_deconnecter;
     QAction *actionChanger_mot_de_passe_Admin;
+    QAction *actionQuitter;
+    QAction *actionA_propros;
     QWidget *centralwidget;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QTabWidget *tabWidget;
-    QWidget *tab;
-    QWidget *tab_2;
     QGridLayout *gridLayout_6;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label;
-    QLineEdit *rechercheLineEdit;
+    QPushButton *supprTextRecherche;
     QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
@@ -59,9 +58,12 @@ public:
     QFrame *line;
     QPushButton *addContact;
     QPushButton *delContact;
+    QFrame *line_2;
+    QPushButton *manageProduct;
     QMenuBar *menubar;
     QMenu *menuFichier;
     QMenu *menuOutils;
+    QMenu *menu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -81,6 +83,10 @@ public:
         actionSe_deconnecter->setObjectName(QString::fromUtf8("actionSe_deconnecter"));
         actionChanger_mot_de_passe_Admin = new QAction(MainWindow);
         actionChanger_mot_de_passe_Admin->setObjectName(QString::fromUtf8("actionChanger_mot_de_passe_Admin"));
+        actionQuitter = new QAction(MainWindow);
+        actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
+        actionA_propros = new QAction(MainWindow);
+        actionA_propros->setObjectName(QString::fromUtf8("actionA_propros"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayoutWidget = new QWidget(centralwidget);
@@ -93,17 +99,6 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         tabWidget = new QTabWidget(horizontalLayoutWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(tab->sizePolicy().hasHeightForWidth());
-        tab->setSizePolicy(sizePolicy);
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        tabWidget->addTab(tab_2, QString());
 
         verticalLayout_2->addWidget(tabWidget);
 
@@ -128,17 +123,18 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Raavi"));
-        font1.setPointSize(10);
+        font1.setPointSize(14);
         font1.setBold(true);
         font1.setWeight(75);
         label->setFont(font1);
 
         horizontalLayout_3->addWidget(label);
 
-        rechercheLineEdit = new QLineEdit(horizontalLayoutWidget_2);
-        rechercheLineEdit->setObjectName(QString::fromUtf8("rechercheLineEdit"));
+        supprTextRecherche = new QPushButton(horizontalLayoutWidget_2);
+        supprTextRecherche->setObjectName(QString::fromUtf8("supprTextRecherche"));
+        supprTextRecherche->setFlat(true);
 
-        horizontalLayout_3->addWidget(rechercheLineEdit);
+        horizontalLayout_3->addWidget(supprTextRecherche);
 
         horizontalLayoutWidget_3 = new QWidget(centralwidget);
         horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
@@ -181,6 +177,19 @@ public:
 
         horizontalLayout_2->addWidget(delContact);
 
+        line_2 = new QFrame(horizontalLayoutWidget_3);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line_2);
+
+        manageProduct = new QPushButton(horizontalLayoutWidget_3);
+        manageProduct->setObjectName(QString::fromUtf8("manageProduct"));
+        manageProduct->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(manageProduct);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -189,6 +198,8 @@ public:
         menuFichier->setObjectName(QString::fromUtf8("menuFichier"));
         menuOutils = new QMenu(menubar);
         menuOutils->setObjectName(QString::fromUtf8("menuOutils"));
+        menu = new QMenu(menubar);
+        menu->setObjectName(QString::fromUtf8("menu"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -196,14 +207,18 @@ public:
 
         menubar->addAction(menuFichier->menuAction());
         menubar->addAction(menuOutils->menuAction());
+        menubar->addAction(menu->menuAction());
+        menuFichier->addAction(actionQuitter);
         menuOutils->addAction(actionGestion_des_produits);
         menuOutils->addAction(actionSuper_Utilisateur);
         menuOutils->addAction(actionChanger_mot_de_passe_Admin);
         menuOutils->addAction(actionSe_deconnecter);
+        menu->addAction(actionA_propros);
 
         retranslateUi(MainWindow);
+        QObject::connect(actionQuitter, SIGNAL(triggered()), MainWindow, SLOT(close()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(-1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -216,19 +231,53 @@ public:
         actionSuper_Utilisateur->setText(QApplication::translate("MainWindow", "Super Utilisateur", 0, QApplication::UnicodeUTF8));
         actionSe_deconnecter->setText(QApplication::translate("MainWindow", "Se deconnecter", 0, QApplication::UnicodeUTF8));
         actionChanger_mot_de_passe_Admin->setText(QApplication::translate("MainWindow", "Changer mot de passe Admin", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "DI3", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "Recherche :", 0, QApplication::UnicodeUTF8));
-        rechercheLineEdit->setText(QString());
+        actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0, QApplication::UnicodeUTF8));
+        actionA_propros->setText(QApplication::translate("MainWindow", "A propros", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("MainWindow", "La dette limite est de 10 \342\202\254", 0, QApplication::UnicodeUTF8));
+        supprTextRecherche->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        addMoney->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Raavi'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ajouter un cr\303\251dit</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         addMoney->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        subMoney->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Raavi'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ajouter une dette</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         subMoney->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        addContact->setToolTip(QString());
+        addContact->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Raavi'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ajouter un client</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         addContact->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        delContact->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Raavi'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Supprimer le client selectionn\303\251</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         delContact->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        manageProduct->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Raavi'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">G\303\251rer les produits</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        manageProduct->setText(QString());
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
         menuOutils->setTitle(QApplication::translate("MainWindow", "Outils", 0, QApplication::UnicodeUTF8));
+        menu->setTitle(QApplication::translate("MainWindow", "?", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

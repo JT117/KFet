@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QVariant>
 #include <QCryptographicHash>
+#include <QSqlError>
 
 #include "product.h"
 #include "client.h"
@@ -17,12 +18,15 @@ class CGestionBDD
 public:
     CGestionBDD();
 
+    static bool connectionBDD();
+
     static void getProductList( QList<CProduct*>& listProduct );
     static void addProduct( CProduct& product );
     static void removeProduct( CProduct& product );
     static void updateProduct( CProduct& product );
 
     static void getClientList( QList<CClient*>& listClient );
+    static void getClientList( QList<CClient*>& listClient, QString critere );
     static void addClient( CClient& client );
     static void removeClient( CClient& client );
     static void updateClient( CClient& client );
@@ -38,6 +42,7 @@ public:
 private:
     static QString sGESnomBDD;
     static QString sGEShostName;
+    static QSqlDatabase db;
 };
 
 #endif // CGESTIONBDD_H

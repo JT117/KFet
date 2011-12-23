@@ -40,6 +40,8 @@ private:
     Ui::CFenetreGestionProduit *ui;
     QList<CProduct*> listProduct;
     MainWindow* mainWindow;
+
+    CProduct& retrouverProduit( QTableWidgetItem* item );
 };
 
 #endif // CFENETREGESTIONPRODUIT_H

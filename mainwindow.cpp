@@ -7,35 +7,45 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     admin = false;
 
-    QVBoxLayout* vbox = new QVBoxLayout;
+    CTab* tabDI3 = new CTab( "DI3" );
+    ui->tabWidget->addTab( tabDI3, "DI3");
+    CTab* tabDI4 = new CTab( "DI4" );
+    ui->tabWidget->addTab( tabDI4, "DI4");
+    CTab* tabDI5 = new CTab( "DI5" );
+    ui->tabWidget->addTab( tabDI5, "DI5");
 
-    etuTable = new QTableWidget( );
-    construirePanneauClient();
+    listTab.append( tabDI3 );
+    listTab.append( tabDI4 );
+    listTab.append( tabDI5 );
+
     construirePanneauProduit();
-
-    vbox->addWidget( etuTable );
-    ui->tab->setLayout( vbox );
 
     connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
     connect( ui->actionSuper_Utilisateur, SIGNAL(triggered()), this, SLOT( ouvrirLogin() ) );
     connect( ui->actionSe_deconnecter, SIGNAL(triggered()), this, SLOT( rendreUser() ) );
     connect( ui->actionChanger_mot_de_passe_Admin, SIGNAL(triggered()), this, SLOT(ouvrirChangerMDP()) );
     connect( ui->addContact, SIGNAL(clicked()), this, SLOT(ouvrirAjoutClient()) );
-    connect( etuTable, SIGNAL(cellClicked(int,int)), this, SLOT(selectionnerLigne(int,int)) );
     connect( ui->addMoney, SIGNAL(clicked()), this, SLOT(ouvrirApproviosionnement()) );
     connect( ui->delContact, SIGNAL(clicked()), this, SLOT(supprimerClient()) );
     connect( ui->subMoney, SIGNAL(clicked()), this, SLOT(ouvrirAjoutEnDette()) );
+    connect( ui->manageProduct, SIGNAL(clicked()), this, SLOT(ouvrirGestionProduit()) );
+    connect(ui->actionA_propros, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    //connect( ui->rechercheLineEdit, SIGNAL(textChanged(QString)), this, SLOT(recherche(QString)) );
 
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSe_deconnecter->setVisible(false);
     ui->actionChanger_mot_de_passe_Admin->setVisible(false);
     ui->delContact->setEnabled( false );
     ui->subMoney->setEnabled( false );
+    ui->manageProduct->setEnabled( false );
+    ui->supprTextRecherche->setVisible(false);
 
     ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
     ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" )); 
     ui->delContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/del_user.png" ));
     ui->subMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/sub_money.png" ));
+    ui->manageProduct->setIcon( QIcon( QDir::currentPath()+"/systeme/image/product_management.png" ));
+    ui->supprTextRecherche->setIcon( QIcon( QDir::currentPath()+"/systeme/image/delete.png" ));
 
     CLog::ecrire( "--------------------------------------------------------------");
     CLog::ecrire( "Ouverture de l'application" );
@@ -44,8 +54,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete etuTable;
 
+    for( int i = 0; i < listTab.size(); i++ )
+    {
+        delete listTab[i];
+    }
     for( int i = 0; i < listProduct.size(); i++ )
     {
         delete listProduct[i];
@@ -54,10 +67,8 @@ MainWindow::~MainWindow()
     {
         delete listBouton[i];
     }
-    for( int i = 0; i < listClient.size(); i++ )
-    {
-        delete listClient[i];
-    }
+
+    QSqlDatabase::removeDatabase( "KFET" );
     CLog::ecrire( "Fermeture de l'application" );
     CLog::ecrire( "--------------------------------------------------------------");
 }
@@ -90,6 +101,7 @@ void MainWindow::rendreAdmin()
     ui->actionChanger_mot_de_passe_Admin->setVisible(true);
     ui->delContact->setEnabled( true );
     ui->subMoney->setEnabled( true );
+    ui->manageProduct->setEnabled( true );
 }
 
 void MainWindow::rendreUser()
@@ -102,6 +114,7 @@ void MainWindow::rendreUser()
     ui->actionChanger_mot_de_passe_Admin->setVisible(false);
     ui->delContact->setEnabled( false );
     ui->subMoney->setEnabled( false );
+    ui->manageProduct->setEnabled( false );
 }
 
 void MainWindow::updateProduit()
@@ -126,68 +139,19 @@ void MainWindow::updateProduit()
 
 void MainWindow::updateClient()
 {
-    for( int i = 0; i < listClient.size(); i++ )
-    {
-        delete listClient.at(i);
-    }
+    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
 
-    listClient.clear();
-    etuTable->clear();
-    this->construirePanneauClient();
+    return tab->updateClient();
 }
 
-void MainWindow::construirePanneauClient()
+void MainWindow::updateAllClient()
 {
-    QStringList header;
-    header << "Nom" << "Prénom" << "Promo" << "Dette";
-    etuTable->setColumnCount(4);
-    etuTable->setHorizontalHeaderLabels( header );
-    etuTable->setColumnWidth(0,126);
-    etuTable->setColumnWidth(1,126);
-
-    CGestionBDD::getClientList( listClient );
-    etuTable->setRowCount( listClient.size() );
-
-    for( int i = 0; i < listClient.size(); i++ )
+    for( int i = 0; i < listTab.size(); i++ )
     {
-        listClient.at(i)->setNumLigne(i);
-
-        QColor couleur( 255, 255, 255 );
-
-        if( listClient.at(i)->getDette() < 10 )
-        {
-            couleur.setRgb( 104, 255, 122 );
-        }
-        else
-        {
-            couleur.setRgb( 255, 95, 25 );
-        }
-
-        QTableWidgetItem* item = new QTableWidgetItem( listClient.at(i)->getNom() );
-        item->setBackgroundColor( couleur );
-        item->setTextAlignment(Qt::AlignCenter);
-        item->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
-        etuTable->setItem(i,0, item );
-
-        QTableWidgetItem* item2 = new QTableWidgetItem( listClient.at(i)->getPrenom() );
-        item2->setBackgroundColor( couleur );
-        item2->setTextAlignment(Qt::AlignCenter);
-        item2->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
-        etuTable->setItem(i,1, item2 );
-
-        QTableWidgetItem* item3 = new QTableWidgetItem( listClient.at(i)->getPromo() );
-        item3->setBackgroundColor( couleur );
-        item3->setTextAlignment( Qt::AlignCenter );
-        item3->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
-        etuTable->setItem(i,2, item3 );
-
-        QTableWidgetItem* item4 = new QTableWidgetItem( QString::number( listClient.at(i)->getDette() ) );
-        item4->setBackgroundColor( couleur );
-        item4->setTextAlignment(Qt::AlignCenter);
-        item4->setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
-        etuTable->setItem(i,3, item4 );
+        listTab[i]->updateClient();
     }
 }
+
 
 void MainWindow::construirePanneauProduit()
 {
@@ -223,43 +187,18 @@ void MainWindow::ouvrirAjoutClient()
     fenetre.exec();
 }
 
-void MainWindow::selectionnerLigne(int row, int column)
-{
-    int nbColumn = etuTable->columnCount();
-
-    etuTable->clearSelection();
-
-    for( int i = 0; i < nbColumn; i++ )
-    {
-        QTableWidgetItem* widget = etuTable->item( row, i );
-        widget->setSelected( true );
-    }
-}
-
 bool MainWindow::clientSelectionner()
 {
-    QList<QTableWidgetItem*> listItem = etuTable->selectedItems();
+    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
 
-    return !listItem.isEmpty();
+    return tab->clientSelectionner();
 }
 
 CClient* MainWindow::getSelectedClient()
 {
-     QList<QTableWidgetItem*> listItem = etuTable->selectedItems();
+    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
 
-     if( !listItem.isEmpty() )
-     {
-         int row = listItem.at(0)->row();
-
-         for( int i = 0; i < listClient.size(); i++ )
-         {
-             if( row == listClient.at(i)->getNumLigne() )
-             {
-                 return (listClient[i]);
-             }
-         }
-     }
-     return NULL;
+    return tab->getSelectedClient();
 }
 
 void MainWindow::ouvrirApproviosionnement()
@@ -365,7 +304,7 @@ void MainWindow::supprimerClient()
         CClient* client = getSelectedClient();
 
         QMessageBox msgBox;
-        msgBox.setText("Etes-vous sûr de vouloir supprimer définitivement" + client->getNom() + " " + client->getPrenom() + " ?" );
+        msgBox.setText("Etes-vous sûr de vouloir supprimer définitivement " + client->getNom() + " " + client->getPrenom() + " ?" );
         msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Ok);
         msgBox.setIcon( QMessageBox::Question );
@@ -383,6 +322,11 @@ void MainWindow::supprimerClient()
     {
         QMessageBox::warning( this, "KFet", "Veuillez selectionner un client en premier");
     }
+}
+
+void MainWindow::recherche(QString text)
+{
+
 }
 
 

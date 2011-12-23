@@ -25,7 +25,7 @@ void CFenetreAjoutClient::validation()
         CClient client(0, ui->nomLineEdit->text(), ui->prenomLineEdtit->text(), 0, ui->promoLineEdit->text() , "none" );
         CGestionBDD::addClient( client );
         CLog::ecrire( "Client ajouté :" + ui->nomLineEdit->text() + " " + ui->prenomLineEdtit->text() + " " + ui->promoLineEdit->text() );
-        mainWindow->updateClient();
+        mainWindow->updateAllClient();
         this->close();
     }
     else

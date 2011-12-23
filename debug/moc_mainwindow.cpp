@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Mon 19. Dec 17:39:46 2011
+** Created: Fri 23. Dec 15:54:42 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -40,9 +40,9 @@ static const uint qt_meta_data_MainWindow[] = {
      136,   11,   11,   11, 0x0a,
      149,   11,   11,   11, 0x0a,
      165,   11,   11,   11, 0x0a,
-     191,  180,   11,   11, 0x0a,
-     218,   11,   11,   11, 0x0a,
-     235,   11,   11,   11, 0x0a,
+     180,   11,   11,   11, 0x0a,
+     197,   11,   11,   11, 0x0a,
+     220,  215,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -53,8 +53,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "ouvrirAjoutClient()\0ouvrirApproviosionnement()\0"
     "ouvrirAjoutEnDette()\0rendreUser()\0"
     "updateProduit()\0updateClient()\0"
-    "row,column\0selectionnerLigne(int,int)\0"
     "ajouterEnDette()\0supprimerClient()\0"
+    "text\0recherche(QString)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -95,9 +95,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 6: rendreUser(); break;
         case 7: updateProduit(); break;
         case 8: updateClient(); break;
-        case 9: selectionnerLigne((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 10: ajouterEnDette(); break;
-        case 11: supprimerClient(); break;
+        case 9: ajouterEnDette(); break;
+        case 10: supprimerClient(); break;
+        case 11: recherche((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
         _id -= 12;

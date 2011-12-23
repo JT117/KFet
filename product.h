@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QDebug>
+#include <QTableWidgetItem>
 
 class CProduct
 {
@@ -12,7 +13,6 @@ public:
     CProduct( int id, QString nom, QString prix, QString cheminImage );
 
     void afficher();
-    void setNumLigne(int i );
     void setChemin( QString path );
     void setNumBouton( int i );
 
@@ -20,16 +20,16 @@ public:
     inline QString getPrix()const { return sPROprix; }
     inline QString getChemin()const { return sPROcheminImage; }
     inline int getId()const { return iPROid; }
-    inline int getNumLigne()const { return iPROnumLigne; }
     inline int getNumBouton()const { return iPROnumBouton; }
+    inline QList<QTableWidgetItem*>& getListItem() { return listItem; }
 
 private:
     int iPROid;
     QString sPROnom;
     QString sPROprix;
     QString sPROcheminImage;
-    int iPROnumLigne;
     int iPROnumBouton;
+    QList<QTableWidgetItem*> listItem;
 
 };
 
