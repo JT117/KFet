@@ -27,6 +27,7 @@ private:
     QString nom;
     QList<CClient*> listClient;
     QTableWidget* etuTable;
+    QVBoxLayout* vbox;
 
     void setupClient();
 

@@ -62,7 +62,6 @@ private:
     QList<QToolButton*> listBouton;
     QList<CTab*> listTab;
 
-    QHelpSearchQueryWidget* helpSearch;
     bool admin;
 
     void construirePanneauProduit();

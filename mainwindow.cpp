@@ -13,10 +13,28 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->addTab( tabDI4, "DI4");
     CTab* tabDI5 = new CTab( "DI5" );
     ui->tabWidget->addTab( tabDI5, "DI5");
+    CTab* tabDA3 = new CTab( "DA3" );
+    ui->tabWidget->addTab( tabDA3, "DA3");
+    CTab* tabDA4 = new CTab( "DA4" );
+    ui->tabWidget->addTab( tabDA4, "DA4");
+    CTab* tabDA5 = new CTab( "DA5" );
+    ui->tabWidget->addTab( tabDA5, "DA5");
+    CTab* tabDP3 = new CTab( "DP3" );
+    ui->tabWidget->addTab( tabDP3, "DP3");
+    CTab* tabDP4 = new CTab( "DI4" );
+    ui->tabWidget->addTab( tabDP4, "DP4");
+    CTab* tabDP5 = new CTab( "DP5" );
+    ui->tabWidget->addTab( tabDP5, "DP5");
 
     listTab.append( tabDI3 );
     listTab.append( tabDI4 );
     listTab.append( tabDI5 );
+    listTab.append( tabDA3 );
+    listTab.append( tabDA4 );
+    listTab.append( tabDA5 );
+    listTab.append( tabDP3 );
+    listTab.append( tabDP4 );
+    listTab.append( tabDP5 );
 
     construirePanneauProduit();
 

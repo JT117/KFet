@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreajoutclient.ui'
 **
-** Created: Tue 20. Dec 15:38:33 2011
+** Created: Tue 3. Jan 08:31:11 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QComboBox>
 #include <QtGui/QDialog>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
@@ -36,7 +37,7 @@ public:
     QLabel *label_3;
     QLineEdit *nomLineEdit;
     QLineEdit *prenomLineEdtit;
-    QLineEdit *promoLineEdit;
+    QComboBox *promoComboBox;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
@@ -73,17 +74,17 @@ public:
         nomLineEdit = new QLineEdit(gridLayoutWidget);
         nomLineEdit->setObjectName(QString::fromUtf8("nomLineEdit"));
 
-        gridLayout->addWidget(nomLineEdit, 0, 1, 1, 1);
+        gridLayout->addWidget(nomLineEdit, 0, 2, 1, 1);
 
         prenomLineEdtit = new QLineEdit(gridLayoutWidget);
         prenomLineEdtit->setObjectName(QString::fromUtf8("prenomLineEdtit"));
 
-        gridLayout->addWidget(prenomLineEdtit, 1, 1, 1, 1);
+        gridLayout->addWidget(prenomLineEdtit, 1, 2, 1, 1);
 
-        promoLineEdit = new QLineEdit(gridLayoutWidget);
-        promoLineEdit->setObjectName(QString::fromUtf8("promoLineEdit"));
+        promoComboBox = new QComboBox(gridLayoutWidget);
+        promoComboBox->setObjectName(QString::fromUtf8("promoComboBox"));
 
-        gridLayout->addWidget(promoLineEdit, 2, 1, 1, 1);
+        gridLayout->addWidget(promoComboBox, 2, 2, 1, 1);
 
         horizontalLayoutWidget = new QWidget(CFenetreAjoutClient);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));

@@ -9,7 +9,7 @@ CTab::CTab( QString nom1 )
     nom = nom1;
     etuTable = new QTableWidget;
 
-    QVBoxLayout* vbox = new QVBoxLayout;
+    vbox = new QVBoxLayout;
     vbox->addWidget( etuTable );
     this->setLayout( vbox );
 
@@ -19,6 +19,7 @@ CTab::CTab( QString nom1 )
 CTab::~CTab()
 {
     delete etuTable;
+    delete vbox;
 
     for( int i = 0; i < listClient.size(); i++ )
     {
