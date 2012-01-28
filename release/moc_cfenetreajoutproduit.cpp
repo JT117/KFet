@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cfenetreajoutproduit.h'
 **
-** Created: Sat 24. Dec 14:45:01 2011
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+** Created: Tue 24. Jan 16:26:27 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../cfenetreajoutproduit.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'cfenetreajoutproduit.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.0. It"
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_CFenetreAjoutProduit[] = {
 
  // content:
-       6,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -42,27 +42,9 @@ static const char qt_meta_stringdata_CFenetreAjoutProduit[] = {
     "ouvrirFichier()\0"
 };
 
-void CFenetreAjoutProduit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        CFenetreAjoutProduit *_t = static_cast<CFenetreAjoutProduit *>(_o);
-        switch (_id) {
-        case 0: _t->ajouter(); break;
-        case 1: _t->ouvrirFichier(); break;
-        default: ;
-        }
-    }
-    Q_UNUSED(_a);
-}
-
-const QMetaObjectExtraData CFenetreAjoutProduit::staticMetaObjectExtraData = {
-    0,  qt_static_metacall 
-};
-
 const QMetaObject CFenetreAjoutProduit::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_CFenetreAjoutProduit,
-      qt_meta_data_CFenetreAjoutProduit, &staticMetaObjectExtraData }
+      qt_meta_data_CFenetreAjoutProduit, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -88,8 +70,11 @@ int CFenetreAjoutProduit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
-            qt_static_metacall(this, _c, _id, _a);
+        switch (_id) {
+        case 0: ajouter(); break;
+        case 1: ouvrirFichier(); break;
+        default: ;
+        }
         _id -= 2;
     }
     return _id;

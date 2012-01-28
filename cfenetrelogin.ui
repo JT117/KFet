@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>240</width>
-    <height>129</height>
+    <height>78</height>
    </rect>
   </property>
   <property name="font">
@@ -28,7 +28,7 @@
    <property name="geometry">
     <rect>
      <x>-110</x>
-     <y>90</y>
+     <y>40</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -46,28 +46,24 @@
      <x>10</x>
      <y>10</y>
      <width>221</width>
-     <height>81</height>
+     <height>41</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
-    <item row="3" column="1">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="1" column="1">
      <widget class="QLineEdit" name="lineEdit">
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
       <property name="echoMode">
        <enum>QLineEdit::Password</enum>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
-    </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Login :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Password :</string>

@@ -7,6 +7,8 @@
 QT       += core gui
 QT       += sql
 
+RC_FILE = KFet.rc
+
 CONFIG += help
 
 TARGET = KFet

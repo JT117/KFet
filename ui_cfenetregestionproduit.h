@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetregestionproduit.ui'
 **
-** Created: Sat 24. Dec 14:44:35 2011
-**      by: Qt User Interface Compiler version 4.8.0
+** Created: Sat 28. Jan 23:22:30 2012
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -79,11 +79,13 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         ppbFGPajouter = new QPushButton(verticalLayoutWidget_2);
         ppbFGPajouter->setObjectName(QString::fromUtf8("ppbFGPajouter"));
+        ppbFGPajouter->setIconSize(QSize(48, 48));
 
         horizontalLayout_3->addWidget(ppbFGPajouter);
 
         ppbFGPsupprimer = new QPushButton(verticalLayoutWidget_2);
         ppbFGPsupprimer->setObjectName(QString::fromUtf8("ppbFGPsupprimer"));
+        ppbFGPsupprimer->setIconSize(QSize(48, 48));
 
         horizontalLayout_3->addWidget(ppbFGPsupprimer);
 
@@ -121,8 +123,8 @@ public:
     void retranslateUi(QDialog *CFenetreGestionProduit)
     {
         CFenetreGestionProduit->setWindowTitle(QApplication::translate("CFenetreGestionProduit", "Dialog", 0, QApplication::UnicodeUTF8));
-        ppbFGPajouter->setText(QApplication::translate("CFenetreGestionProduit", "Ajouter", 0, QApplication::UnicodeUTF8));
-        ppbFGPsupprimer->setText(QApplication::translate("CFenetreGestionProduit", "Supprimer", 0, QApplication::UnicodeUTF8));
+        ppbFGPajouter->setText(QString());
+        ppbFGPsupprimer->setText(QString());
         ppbFGPok->setText(QApplication::translate("CFenetreGestionProduit", "OK", 0, QApplication::UnicodeUTF8));
         ppbFGPannuler->setText(QApplication::translate("CFenetreGestionProduit", "Annuler", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

@@ -12,6 +12,7 @@ CFenetreLogin::CFenetreLogin( MainWindow* main, QWidget *parent) :
     ui->setupUi(this);
     fenetrePrincipale = main;
     connect( ui->buttonBox, SIGNAL( accepted() ), this, SLOT( login() ) );
+    ui->lineEdit->setFocus();
 }
 
 CFenetreLogin::~CFenetreLogin()
@@ -22,7 +23,7 @@ CFenetreLogin::~CFenetreLogin()
 
 void CFenetreLogin::login()
 {
-    if( CGestionBDD::identification( ui->lineEdit_2->text(), ui->lineEdit->text() ) )
+    if( CGestionBDD::identification( ui->lineEdit->text() ) )
     {
         qDebug() << "Succes" << endl;
         QMessageBox::information( this, "KFet", "Vous avez maintenant tous les doits sur le logiciel");

@@ -11,6 +11,9 @@ CFenetreGestionProduit::CFenetreGestionProduit(MainWindow* main, QWidget *parent
     this->setupTable();
     this->setWindowTitle("KFet - Gestion des produits");
 
+    ui->ppbFGPajouter->setIcon( QIcon( QDir::currentPath() + "/systeme/ajouter.ico" ) );
+    ui->ppbFGPsupprimer->setIcon( QIcon( QDir::currentPath() + "/systeme/supprimer.ico" ) );
+
     connect( ui->ppbFGPajouter, SIGNAL(clicked()), this, SLOT(ajouter()) );
     connect( ui->ppbFGPsupprimer, SIGNAL(clicked()), this, SLOT(supprimer()) );
     connect( ui->ptwFGPtableProduct, SIGNAL(cellChanged(int,int)), this, SLOT( celluleChanged(int,int) ) );
@@ -50,7 +53,7 @@ void CFenetreGestionProduit::updateTable()
 
 void CFenetreGestionProduit::supprimer()     //Besoin de retrouver le produit
 {
-    if( ui->ptwFGPtableProduct->rowCount() > 0 )
+    if( ui->ptwFGPtableProduct->rowCount() > 0 && ui->ptwFGPtableProduct->selectedItems().size() > 0 )
     {
         int row  = ui->ptwFGPtableProduct->currentRow();
 

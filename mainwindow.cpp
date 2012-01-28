@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->addTab( tabDA5, "DA5");
     CTab* tabDP3 = new CTab( "DP3" );
     ui->tabWidget->addTab( tabDP3, "DP3");
-    CTab* tabDP4 = new CTab( "DI4" );
+    CTab* tabDP4 = new CTab( "DP4" );
     ui->tabWidget->addTab( tabDP4, "DP4");
     CTab* tabDP5 = new CTab( "DP5" );
     ui->tabWidget->addTab( tabDP5, "DP5");

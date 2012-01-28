@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetrelogin.ui'
 **
-** Created: Sat 24. Dec 14:44:35 2011
-**      by: Qt User Interface Compiler version 4.8.0
+** Created: Sat 28. Jan 23:33:34 2012
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -31,8 +31,6 @@ public:
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
-    QLabel *label;
     QLabel *label_2;
 
     void setupUi(QDialog *CFenetreLogin)
@@ -40,42 +38,34 @@ public:
         if (CFenetreLogin->objectName().isEmpty())
             CFenetreLogin->setObjectName(QString::fromUtf8("CFenetreLogin"));
         CFenetreLogin->setWindowModality(Qt::ApplicationModal);
-        CFenetreLogin->resize(240, 129);
+        CFenetreLogin->resize(240, 78);
         QFont font;
         font.setPointSize(10);
         CFenetreLogin->setFont(font);
         CFenetreLogin->setModal(true);
         buttonBox = new QDialogButtonBox(CFenetreLogin);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setGeometry(QRect(-110, 90, 341, 32));
+        buttonBox->setGeometry(QRect(-110, 40, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         formLayoutWidget = new QWidget(CFenetreLogin);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(10, 10, 221, 81));
+        formLayoutWidget->setGeometry(QRect(10, 10, 221, 41));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
         formLayout->setContentsMargins(0, 0, 0, 0);
         lineEdit = new QLineEdit(formLayoutWidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setFocusPolicy(Qt::StrongFocus);
         lineEdit->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit);
-
-        lineEdit_2 = new QLineEdit(formLayoutWidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
-
-        label = new QLabel(formLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label);
+        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit);
 
         label_2 = new QLabel(formLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
 
 
         retranslateUi(CFenetreLogin);
@@ -88,7 +78,6 @@ public:
     void retranslateUi(QDialog *CFenetreLogin)
     {
         CFenetreLogin->setWindowTitle(QApplication::translate("CFenetreLogin", "Login", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("CFenetreLogin", "Login :", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("CFenetreLogin", "Password :", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
