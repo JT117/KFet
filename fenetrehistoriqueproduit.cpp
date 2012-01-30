@@ -19,6 +19,14 @@ fenetreHistoriqueProduit::fenetreHistoriqueProduit( int i, QWidget *parent ) :
 
     ui->titre->setText( "Produit : " + produit.getNom() + " - prix : " + produit.getPrix() );
 
+    if( quantite.size() == 0 )
+    {
+        for( int i = 0; i < nombreSemaine; i++ )
+        {
+            quantite.append(0);
+        }
+    }
+
     int largeur = ui->graphicsView->width();
     int hauteur = ui->graphicsView->height();
     int largeurColonne = (int)(largeur / nombreSemaine);
@@ -86,6 +94,11 @@ int fenetreHistoriqueProduit::maximumListInt(QList<int> liste)
         {
             max = liste.at(i);
         }
+    }
+
+    if( max == 0 )
+    {
+        max = 1;
     }
 
     return max;
