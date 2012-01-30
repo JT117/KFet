@@ -10,8 +10,6 @@
 #include <QMessageBox>
 #include <QList>
 #include <QVariant>
-#include <QHelpSearchEngine>
-#include <QHelpSearchQueryWidget>
 
 #include "cfenetregestionproduit.h"
 #include "product.h"
@@ -24,6 +22,7 @@
 #include "cfenetreapprovisionnement.h"
 #include "cfenetremiseendette.h"
 #include "tab.h"
+#include "fenetrehistoriqueproduit.h"
 
 namespace Ui {
     class MainWindow;

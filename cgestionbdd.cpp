@@ -4,10 +4,6 @@ QString CGestionBDD::sGESnomBDD = "kfet";
 QString CGestionBDD::sGEShostName = "localhost";
 QSqlDatabase CGestionBDD::db = QSqlDatabase::database();
 
-CGestionBDD::CGestionBDD()
-{
-}
-
 bool CGestionBDD::connectionBDD()
 {
     if( !QSqlDatabase::connectionNames().contains( "KFET" ) )
@@ -95,6 +91,33 @@ void CGestionBDD::updateProduct( CProduct& product )
         QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
     }
 }
+
+CProduct CGestionBDD::getProduct(int i)
+{
+    if( CGestionBDD::connectionBDD() )
+    {
+        QSqlQuery query(db);
+        query.exec( "SELECT * from Product WHERE id = '"+ QString::number( i ) +"' ;" );
+
+        while( query.next() )
+        {
+            int id = query.value(0).toInt();
+            QString nom = query.value(1).toString();
+            QString prix = query.value(2).toString();
+            QString cheminImage = query.value(3).toString();
+
+            CProduct product( id, nom, prix, cheminImage );
+            return product;
+        }
+
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
 
 //******************** Gestion des Clients ***********************************
 
@@ -313,6 +336,45 @@ void CGestionBDD::addDette(int idCli, int idPro, int idDate, double somme)
         QSqlQuery query(db);
         query.exec( "INSERT INTO EnDette( idcli, iddate, somme, idprod ) VALUES ('" + QString::number( idCli ) + "', '"
                     + QString::number( idDate ) + "', '"+ QString::number(somme) +"', '"+ QString::number(idPro) +"' );");
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
+QList<int> CGestionBDD::getHistorique(int idPro, int nbSemaine)
+{
+    if( CGestionBDD::connectionBDD() )
+    {
+        QList<int> listeInt;
+        QDate date = QDate::currentDate();
+        QDate date1 = date;
+        date = date.addDays( -7 );
+
+        for( int i = 0; i < nbSemaine; i++ )
+        {
+            QSqlQuery query(db);
+            query.exec( "SELECT COUNT(id) FROM Endette WHERE idprod = '"+ QString::number( idPro ) + "' AND iddate IN ( SELECT id FROM Date WHERE date >= '"
+                        + date.toString( Qt::ISODate ) +"' AND date <= '"+ date1.toString( Qt::ISODate ) +"');");
+            qDebug() << "SELECT COUNT(id) FROM Endette WHERE idprod = '"+ QString::number( idPro ) + "' AND iddate IN ( SELECT id FROM Date WHERE date >= '"
+                        + date.toString( Qt::ISODate ) +"' AND date <= '"+ date1.toString( Qt::ISODate ) +"');" ;
+
+            int nb;
+
+            while( query.next() )
+            {
+                nb = query.value(0).toInt();
+                qDebug() << nb;
+            }
+
+            listeInt.append(nb);
+            date1 = date1.addDays( -7 );
+            date = date.addDays( -7 );
+        }
+
+        return listeInt;
         db.close();
     }
     else

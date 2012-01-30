@@ -13,6 +13,7 @@ INPUT(
 ./release/cfenetreajoutclient.o
 ./release/cfenetreapprovisionnement.o
 ./release/cfenetremiseendette.o
+./release/fenetrehistoriqueproduit.o
 ./release/moc_mainwindow.o
 ./release/moc_cfenetreajoutproduit.o
 ./release/moc_cfenetregestionproduit.o
@@ -21,4 +22,5 @@ INPUT(
 ./release/moc_cfenetreajoutclient.o
 ./release/moc_cfenetreapprovisionnement.o
 ./release/moc_cfenetremiseendette.o
+./release/moc_fenetrehistoriqueproduit.o
 );

@@ -13,11 +13,13 @@ CFenetreGestionProduit::CFenetreGestionProduit(MainWindow* main, QWidget *parent
 
     ui->ppbFGPajouter->setIcon( QIcon( QDir::currentPath() + "/systeme/ajouter.ico" ) );
     ui->ppbFGPsupprimer->setIcon( QIcon( QDir::currentPath() + "/systeme/supprimer.ico" ) );
+    ui->ppbFGPhistorique->setIcon( QIcon( QDir::currentPath() + "/systeme/historique.ico" ) );
 
     connect( ui->ppbFGPajouter, SIGNAL(clicked()), this, SLOT(ajouter()) );
     connect( ui->ppbFGPsupprimer, SIGNAL(clicked()), this, SLOT(supprimer()) );
     connect( ui->ptwFGPtableProduct, SIGNAL(cellChanged(int,int)), this, SLOT( celluleChanged(int,int) ) );
     connect( ui->ppbFGPok, SIGNAL(clicked()), this, SLOT(accept()) );
+    connect( ui->ppbFGPhistorique, SIGNAL(clicked()), this, SLOT( historique() ) );
 }
 
 CFenetreGestionProduit::~CFenetreGestionProduit()
@@ -25,6 +27,12 @@ CFenetreGestionProduit::~CFenetreGestionProduit()
     delete ui;
     this->nettoyerListe();
     mainWindow->updateProduit();
+}
+
+void CFenetreGestionProduit::ajouter()
+{
+    CFenetreAjoutProduit fenetreAjout;
+    fenetreAjout.exec();
 }
 
 void CFenetreGestionProduit::nettoyerListe()
@@ -37,11 +45,21 @@ void CFenetreGestionProduit::nettoyerListe()
     listProduct.clear();
 }
 
-void CFenetreGestionProduit::ajouter()
+void CFenetreGestionProduit::historique()
 {
-    CFenetreAjoutProduit fenetreAjout;
-    fenetreAjout.exec();
-    this->updateTable();
+    if( ui->ptwFGPtableProduct->selectedItems().size() > 0 )
+    {
+        int row  = ui->ptwFGPtableProduct->currentRow();
+
+        CProduct product = retrouverProduit( ui->ptwFGPtableProduct->item( row , 0 ) );
+
+        fenetreHistoriqueProduit fenetreAjout( product.getId(), this );
+        fenetreAjout.exec();
+    }
+    else
+    {
+        QMessageBox::warning( this, "KFet", "Vous devez d'abord selectionner un produit pour voir son historique." );
+    }
 }
 
 void CFenetreGestionProduit::updateTable()

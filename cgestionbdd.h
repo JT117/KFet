@@ -9,21 +9,22 @@
 #include <QVariant>
 #include <QCryptographicHash>
 #include <QSqlError>
+#include <QDate>
 
 #include "product.h"
 #include "client.h"
+#include "product.h"
 
 class CGestionBDD
 {
 public:
-    CGestionBDD();
-
     static bool connectionBDD();
 
     static void getProductList( QList<CProduct*>& listProduct );
     static void addProduct( CProduct& product );
     static void removeProduct( CProduct& product );
     static void updateProduct( CProduct& product );
+    static CProduct getProduct( int i );
 
     static void getClientList( QList<CClient*>& listClient );
     static void getClientList( QList<CClient*>& listClient, QString critere );
@@ -38,6 +39,9 @@ public:
     static int addDate( QString date, QString time );
     static void addApprovisionnement( int idCli, int idDate, double value );
     static void addDette( int idCli, int idPro, int idDate, double somme );
+    static QList<int> getHistorique( int idPro, int nbSemaine );
+
+
 
 private:
     static QString sGESnomBDD;

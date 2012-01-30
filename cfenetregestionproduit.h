@@ -35,6 +35,7 @@ public slots:
     void supprimer();
     void celluleChanged(int x, int y);
     void celluleClicked(int x, int y);
+    void historique();
 
 private:
     Ui::CFenetreGestionProduit *ui;

@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     clog.cpp \
     cfenetreajoutclient.cpp \
     cfenetreapprovisionnement.cpp \
-    cfenetremiseendette.cpp
+    cfenetremiseendette.cpp \
+    fenetrehistoriqueproduit.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -43,7 +44,8 @@ HEADERS  += \
     clog.h \
     cfenetreajoutclient.h \
     cfenetreapprovisionnement.h \
-    cfenetremiseendette.h
+    cfenetremiseendette.h \
+    fenetrehistoriqueproduit.h
 
 FORMS    += \
     mainwindow.ui \
@@ -53,7 +55,8 @@ FORMS    += \
     fenetrechangermdp.ui \
     cfenetreajoutclient.ui \
     cfenetreapprovisionnement.ui \
-    cfenetremiseendette.ui
+    cfenetremiseendette.ui \
+    fenetrehistoriqueproduit.ui
 
 
 
