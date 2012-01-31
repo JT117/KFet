@@ -21,6 +21,12 @@ bool CGestionBDD::connectionBDD()
     }
 
     return ouvert;
+
+}
+
+void CGestionBDD::deconnectionBDD()
+{
+    db.close();
 }
 
 //******************** Gestion des produits ************************************
@@ -55,7 +61,7 @@ void CGestionBDD::addProduct( CProduct& product )
     if( CGestionBDD::connectionBDD() )
     {
         QSqlQuery query(db);
-        query.exec( "INSERT INTO Product (nom, prix, cheminImage ) VALUES ( '" + product.getNom() + "', '" + product.getPrix() + "', '"+ product.getChemin() + "' );" );
+        query.exec( "INSERT INTO Product (nom, prix, cheminImage ) VALUES ( '" + product.getNom().replace( "'", "''") + "', '" + product.getPrix().replace( "'", "''") + "', '"+ product.getChemin().replace( "'", "''") + "' );" );
         db.close();
     }
     else
@@ -82,7 +88,8 @@ void CGestionBDD::updateProduct( CProduct& product )
     if( CGestionBDD::connectionBDD() )
     {
         QSqlQuery query(db);
-        query.exec( "UPDATE PRODUCT SET nom = '" + product.getNom() + "', prix = '" + product.getPrix() + "', cheminImage = '"+ product.getChemin() +
+        query.exec( "UPDATE PRODUCT SET nom = '" + product.getNom().replace( "'", "''") + "', prix = '" + product.getPrix().replace( "'", "''")
+                    + "', cheminImage = '"+ product.getChemin().replace( "'", "''") +
                     "' WHERE id = '" + QString::number( product.getId() ) + "';" );
         db.close();
     }
@@ -114,12 +121,43 @@ CProduct CGestionBDD::getProduct(int i)
     }
     else
     {
-        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+        QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );  
     }
+    CProduct product;
+    return product;
 }
 
 
 //******************** Gestion des Clients ***********************************
+
+CClient CGestionBDD::getClient( int id )
+{
+    if( CGestionBDD::connectionBDD() )
+    {
+        QSqlQuery query(db);
+        query.exec( "SELECT * FROM CLIENT WHERE id = '" + QString::number( id ) + "' ;");
+
+        while( query.next() )
+        {
+            int id = query.value(0).toInt();
+            QString nom = query.value(1).toString();
+            QString prenom = query.value(2).toString();
+            float dette = query.value(3).toFloat();
+            QString promo = query.value(4).toString();
+            QString droit = query.value(5).toString();
+
+            CClient client( id, nom, prenom, dette, promo, droit );
+            return client;
+        }
+
+       db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "KFet", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
 
 void CGestionBDD::getClientList( QList<CClient*>& listClient )
 {
@@ -182,7 +220,7 @@ void CGestionBDD::addClient( CClient& client )
     if( CGestionBDD::connectionBDD() )
     {
         QSqlQuery query(db);
-        query.exec( "INSERT INTO CLIENT (nom, prenom, dette, promo, droit ) VALUES ( '" + client.getNom() + "', '" + client.getPrenom() + "', '"+ QString::number( client.getDette() ) + "', '"+ client.getPromo()+ "', '" + client.getDroit() + "' );" );
+        query.exec( "INSERT INTO CLIENT (nom, prenom, dette, promo, droit ) VALUES ( '" + client.getNom().replace( "'", "''") + "', '" + client.getPrenom().replace( "'", "''") + "', '"+ QString::number( client.getDette() ) + "', '"+ client.getPromo().replace( "'", "''") + "', '" + client.getDroit() + "' );" );
         client.setID( query.lastInsertId().toInt() );
         db.close();
     }
@@ -210,7 +248,8 @@ void CGestionBDD::updateClient( CClient& client )
     if( CGestionBDD::connectionBDD() )
     {
         QSqlQuery query(db);
-        query.exec( "UPDATE CLIENT SET nom = '" + client.getNom() + "', prenom = '" + client.getPrenom() + "', dette = '"+ QString::number(client.getDette())  + "', promo = '" + client.getPromo() + "', droit = '" + client.getDroit() +
+        query.exec( "UPDATE CLIENT SET nom = '" + client.getNom().replace( "'", "''") + "', prenom = '" + client.getPrenom().replace( "'", "''")
+                    + "', dette = '"+ QString::number(client.getDette())  + "', promo = '" + client.getPromo() + "', droit = '" + client.getDroit() +
                     "' WHERE id = '"+ QString::number( client.getID() ) + "';" );
         db.close();
     }
@@ -380,5 +419,7 @@ QList<int> CGestionBDD::getHistorique(int idPro, int nbSemaine)
     else
     {
         QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );
+        QList<int> liste;
+        return liste;
     }
 }

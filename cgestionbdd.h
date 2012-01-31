@@ -19,6 +19,7 @@ class CGestionBDD
 {
 public:
     static bool connectionBDD();
+    static void deconnectionBDD();
 
     static void getProductList( QList<CProduct*>& listProduct );
     static void addProduct( CProduct& product );
@@ -31,6 +32,7 @@ public:
     static void addClient( CClient& client );
     static void removeClient( CClient& client );
     static void updateClient( CClient& client );
+    static CClient getClient( int i );
 
     static bool identification( QString username, QString password );
     static bool identification( QString password );

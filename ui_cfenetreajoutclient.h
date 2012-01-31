@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreajoutclient.ui'
 **
-** Created: Tue 24. Jan 16:26:02 2012
+** Created: Mon 30. Jan 20:54:50 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

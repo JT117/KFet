@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Mon 30. Jan 11:13:49 2012
+** Created: Tue 31. Jan 09:13:24 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,6 +43,7 @@ static const uint qt_meta_data_MainWindow[] = {
      180,   11,   11,   11, 0x0a,
      197,   11,   11,   11, 0x0a,
      220,  215,   11,   11, 0x0a,
+     239,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -54,7 +55,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "ouvrirAjoutEnDette()\0rendreUser()\0"
     "updateProduit()\0updateClient()\0"
     "ajouterEnDette()\0supprimerClient()\0"
-    "text\0recherche(QString)\0"
+    "text\0recherche(QString)\0editionClient()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -98,9 +99,10 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 9: ajouterEnDette(); break;
         case 10: supprimerClient(); break;
         case 11: recherche((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 12: editionClient(); break;
         default: ;
         }
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

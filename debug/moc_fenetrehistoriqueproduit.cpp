@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'fenetrehistoriqueproduit.h'
 **
-** Created: Mon 30. Jan 11:14:01 2012
+** Created: Tue 31. Jan 09:13:39 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

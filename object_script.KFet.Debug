@@ -14,6 +14,7 @@ INPUT(
 ./debug/cfenetreapprovisionnement.o
 ./debug/cfenetremiseendette.o
 ./debug/fenetrehistoriqueproduit.o
+./debug/fenetreeditionclient.o
 ./debug/moc_mainwindow.o
 ./debug/moc_cfenetreajoutproduit.o
 ./debug/moc_cfenetregestionproduit.o
@@ -23,4 +24,5 @@ INPUT(
 ./debug/moc_cfenetreapprovisionnement.o
 ./debug/moc_cfenetremiseendette.o
 ./debug/moc_fenetrehistoriqueproduit.o
+./debug/moc_fenetreeditionclient.o
 );

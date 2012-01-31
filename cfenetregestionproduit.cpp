@@ -33,6 +33,7 @@ void CFenetreGestionProduit::ajouter()
 {
     CFenetreAjoutProduit fenetreAjout;
     fenetreAjout.exec();
+    updateTable();
 }
 
 void CFenetreGestionProduit::nettoyerListe()

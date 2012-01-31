@@ -23,6 +23,7 @@
 #include "cfenetremiseendette.h"
 #include "tab.h"
 #include "fenetrehistoriqueproduit.h"
+#include "fenetreeditionclient.h"
 
 namespace Ui {
     class MainWindow;
@@ -53,6 +54,7 @@ public slots:
     void ajouterEnDette();
     void supprimerClient();
     void recherche(QString text );
+    void editionClient();
 
 private:
     Ui::MainWindow *ui;

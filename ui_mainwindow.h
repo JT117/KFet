@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 24. Jan 16:26:02 2012
+** Created: Tue 31. Jan 09:10:53 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -57,6 +57,7 @@ public:
     QPushButton *subMoney;
     QFrame *line;
     QPushButton *addContact;
+    QPushButton *edition;
     QPushButton *delContact;
     QFrame *line_2;
     QPushButton *manageProduct;
@@ -171,6 +172,12 @@ public:
 
         horizontalLayout_2->addWidget(addContact);
 
+        edition = new QPushButton(horizontalLayoutWidget_3);
+        edition->setObjectName(QString::fromUtf8("edition"));
+        edition->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(edition);
+
         delContact = new QPushButton(horizontalLayoutWidget_3);
         delContact->setObjectName(QString::fromUtf8("delContact"));
         delContact->setIconSize(QSize(48, 48));
@@ -259,6 +266,10 @@ public:
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ajouter un client</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         addContact->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        edition->setToolTip(QApplication::translate("MainWindow", "Editer un client", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        edition->setText(QString());
 #ifndef QT_NO_TOOLTIP
         delContact->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

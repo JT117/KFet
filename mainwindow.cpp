@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->subMoney, SIGNAL(clicked()), this, SLOT(ouvrirAjoutEnDette()) );
     connect( ui->manageProduct, SIGNAL(clicked()), this, SLOT(ouvrirGestionProduit()) );
     connect(ui->actionA_propros, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect( ui->edition, SIGNAL(clicked()), this, SLOT(editionClient()) );
     //connect( ui->rechercheLineEdit, SIGNAL(textChanged(QString)), this, SLOT(recherche(QString)) );
 
     ui->actionGestion_des_produits->setEnabled(false);
@@ -58,11 +59,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->supprTextRecherche->setVisible(false);
 
     ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
-    ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" )); 
-    ui->delContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/del_user.png" ));
-    ui->subMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/sub_money.png" ));
-    ui->manageProduct->setIcon( QIcon( QDir::currentPath()+"/systeme/image/product_management.png" ));
-    ui->supprTextRecherche->setIcon( QIcon( QDir::currentPath()+"/systeme/image/delete.png" ));
+    ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ) );
+    ui->delContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/del_user.png" ) );
+    ui->subMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/sub_money.png" ) );
+    ui->manageProduct->setIcon( QIcon( QDir::currentPath()+"/systeme/image/product_management.png" ) );
+    ui->supprTextRecherche->setIcon( QIcon( QDir::currentPath()+"/systeme/image/delete.png" ) );
+    ui->edition->setIcon( QIcon( QDir::currentPath()+"/systeme/editer.ico" ) );
 
     CLog::ecrire( "--------------------------------------------------------------");
     CLog::ecrire( "Ouverture de l'application" );
@@ -85,9 +87,25 @@ MainWindow::~MainWindow()
         delete listBouton[i];
     }
 
-    QSqlDatabase::removeDatabase( "KFET" );
+    CGestionBDD::deconnectionBDD();
+
     CLog::ecrire( "Fermeture de l'application" );
     CLog::ecrire( "--------------------------------------------------------------");
+}
+
+void MainWindow::editionClient()
+{
+    if( this->clientSelectionner() )
+    {
+        CClient* client = this->getSelectedClient();
+        FenetreEditionClient fenetre( client->getID(), this );
+        fenetre.exec();
+        updateAllClient();
+    }
+    else
+    {
+        QMessageBox::warning( this, "KFet", "Veuillez d'abord selectionné un client.");
+    }
 }
 
 void MainWindow::ouvrirGestionProduit()

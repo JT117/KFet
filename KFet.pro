@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     cfenetreajoutclient.cpp \
     cfenetreapprovisionnement.cpp \
     cfenetremiseendette.cpp \
-    fenetrehistoriqueproduit.cpp
+    fenetrehistoriqueproduit.cpp \
+    fenetreeditionclient.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS  += \
     cfenetreajoutclient.h \
     cfenetreapprovisionnement.h \
     cfenetremiseendette.h \
-    fenetrehistoriqueproduit.h
+    fenetrehistoriqueproduit.h \
+    fenetreeditionclient.h
 
 FORMS    += \
     mainwindow.ui \
@@ -56,7 +58,8 @@ FORMS    += \
     cfenetreajoutclient.ui \
     cfenetreapprovisionnement.ui \
     cfenetremiseendette.ui \
-    fenetrehistoriqueproduit.ui
+    fenetrehistoriqueproduit.ui \
+    fenetreeditionclient.ui
 
 
 
