@@ -40,7 +40,7 @@ void CFenetreApprovisionnement::validation()
 
         CLog::ecrire( "Credit de : " + QString::number( ui->spinBox->value() ) + " à " + client->getNom() + " " + client->getPrenom() );
 
-        QMessageBox::information( this, "KFet", "Vous avez bien ajouté " + QString::number( ui->spinBox->value() ) + "€ en crédit à " + client->getNom() +
+        QMessageBox::information( this, "KFet", "Vous avez bien ajouté " + QString::number( ui->spinBox->value() ) + QString(8364) + " en crédit à " + client->getNom() +
                                   " " + client->getPrenom() );
 
         mainWindow->updateClient();

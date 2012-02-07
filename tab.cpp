@@ -48,11 +48,12 @@ void CTab::setupClient()
     {
         QColor couleur( 255, 255, 255 );
 
-        if( listClient.at(i)->getDette() < 10 )
+        if( listClient.at(i)->getDette() < 0 )
         {
             couleur.setRgb( 104, 255, 122 );
         }
-        else
+        else if( ( nom == "KFtier" && listClient.at(i)->getDette() >= Settings::getDetteKFtier() ) ||
+                   nom != "KFtier" && listClient.at(i)->getDette() >= Settings::getDetteClient() )
         {
             couleur.setRgb( 255, 95, 25 );
         }

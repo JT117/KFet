@@ -11,6 +11,7 @@
 
 #include "client.h"
 #include "cgestionbdd.h"
+#include "settings.h"
 
 class CTab : public QWidget
 {

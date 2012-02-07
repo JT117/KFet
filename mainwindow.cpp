@@ -6,36 +6,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     admin = false;
 
-    CTab* tabDI3 = new CTab( "DI3" );
-    ui->tabWidget->addTab( tabDI3, "DI3");
-    CTab* tabDI4 = new CTab( "DI4" );
-    ui->tabWidget->addTab( tabDI4, "DI4");
-    CTab* tabDI5 = new CTab( "DI5" );
-    ui->tabWidget->addTab( tabDI5, "DI5");
-    CTab* tabDA3 = new CTab( "DA3" );
-    ui->tabWidget->addTab( tabDA3, "DA3");
-    CTab* tabDA4 = new CTab( "DA4" );
-    ui->tabWidget->addTab( tabDA4, "DA4");
-    CTab* tabDA5 = new CTab( "DA5" );
-    ui->tabWidget->addTab( tabDA5, "DA5");
-    CTab* tabDP3 = new CTab( "DP3" );
-    ui->tabWidget->addTab( tabDP3, "DP3");
-    CTab* tabDP4 = new CTab( "DP4" );
-    ui->tabWidget->addTab( tabDP4, "DP4");
-    CTab* tabDP5 = new CTab( "DP5" );
-    ui->tabWidget->addTab( tabDP5, "DP5");
+    QStringList listeNomTab = Settings::getTablist();
 
-    listTab.append( tabDI3 );
-    listTab.append( tabDI4 );
-    listTab.append( tabDI5 );
-    listTab.append( tabDA3 );
-    listTab.append( tabDA4 );
-    listTab.append( tabDA5 );
-    listTab.append( tabDP3 );
-    listTab.append( tabDP4 );
-    listTab.append( tabDP5 );
+    for( int i = 0; i < listeNomTab.size(); i++ )
+    {
+        CTab* tab = new CTab( listeNomTab.at(i) );
+        ui->tabWidget->addTab( tab, listeNomTab.at(i) );
+        listTab.append( tab );
+    }
 
     construirePanneauProduit();
+
+    ui->centralwidget->setLayout( ui->verticalLayout );
+    ui->centralwidget->setContentsMargins( 5, 5, 5, 5 );
 
     connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
     connect( ui->actionSuper_Utilisateur, SIGNAL(triggered()), this, SLOT( ouvrirLogin() ) );
@@ -46,9 +29,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->delContact, SIGNAL(clicked()), this, SLOT(supprimerClient()) );
     connect( ui->subMoney, SIGNAL(clicked()), this, SLOT(ouvrirAjoutEnDette()) );
     connect( ui->manageProduct, SIGNAL(clicked()), this, SLOT(ouvrirGestionProduit()) );
-    connect(ui->actionA_propros, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect( ui->actionA_propros, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect( ui->edition, SIGNAL(clicked()), this, SLOT(editionClient()) );
-    //connect( ui->rechercheLineEdit, SIGNAL(textChanged(QString)), this, SLOT(recherche(QString)) );
+    connect( ui->actionLimite_de_dette, SIGNAL(triggered()), this, SLOT( changerLimiteDette() ) );
+    connect( ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(updateLabelDette()) );
 
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSe_deconnecter->setVisible(false);
@@ -57,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->subMoney->setEnabled( false );
     ui->manageProduct->setEnabled( false );
     ui->supprTextRecherche->setVisible(false);
+    ui->actionLimite_de_dette->setEnabled( false );
 
     ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
     ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ) );
@@ -66,14 +51,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->supprTextRecherche->setIcon( QIcon( QDir::currentPath()+"/systeme/image/delete.png" ) );
     ui->edition->setIcon( QIcon( QDir::currentPath()+"/systeme/editer.ico" ) );
 
+    updateLabelDette();
+
     CLog::ecrire( "--------------------------------------------------------------");
     CLog::ecrire( "Ouverture de l'application" );
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-
     for( int i = 0; i < listTab.size(); i++ )
     {
         delete listTab[i];
@@ -89,8 +74,53 @@ MainWindow::~MainWindow()
 
     CGestionBDD::deconnectionBDD();
 
+    delete ui;
+
     CLog::ecrire( "Fermeture de l'application" );
     CLog::ecrire( "--------------------------------------------------------------");
+}
+
+void MainWindow::setDette()
+{
+    CClient* client = getSelectedClient();
+    FenetreSetDette fenetre( client->getID(), this );
+    fenetre.exec();
+    updateAllClient();
+}
+
+void MainWindow::contextMenuEvent( QContextMenuEvent *event )
+{
+    if( clientSelectionner() && ui->tabWidget->currentWidget()->frameGeometry().contains( this->cursor().pos().x(), this->cursor().pos().y() ) )
+    {
+        QMenu menu(this);
+        QAction* actionSetDette = menu.addAction( "Fixer la dette", this, SLOT( setDette() ), 0 );
+        menu.move( this->cursor().pos().x(), this->cursor().pos().y() );
+
+        if( admin )
+        {
+            actionSetDette->setEnabled( true );
+        }
+        else
+        {
+            actionSetDette->setEnabled( false );
+        }
+
+        menu.exec();
+
+        delete actionSetDette;
+    }
+}
+
+void MainWindow::updateLabelDette()
+{
+    if( ui->tabWidget->tabText( ui->tabWidget->currentIndex() ) == "KFtier" )
+    {
+        ui->labelDette->setText( "Dette limitée à : " + QString::number( Settings::getDetteKFtier() ) + QString(8364) );
+    }
+    else
+    {
+        ui->labelDette->setText( "Dette limitée à : " + QString::number( Settings::getDetteClient() ) + QString(8364) );
+    }
 }
 
 void MainWindow::editionClient()
@@ -137,6 +167,7 @@ void MainWindow::rendreAdmin()
     ui->delContact->setEnabled( true );
     ui->subMoney->setEnabled( true );
     ui->manageProduct->setEnabled( true );
+    ui->actionLimite_de_dette->setEnabled( true );
 }
 
 void MainWindow::rendreUser()
@@ -150,6 +181,7 @@ void MainWindow::rendreUser()
     ui->delContact->setEnabled( false );
     ui->subMoney->setEnabled( false );
     ui->manageProduct->setEnabled( false );
+    ui->actionLimite_de_dette->setEnabled( false );
 }
 
 void MainWindow::updateProduit()
@@ -202,8 +234,8 @@ void MainWindow::construirePanneauProduit()
         bouton->setText( listProduct[iBoucle]->getNom()+" "+listProduct[iBoucle]->getPrix()+ QString(8364) );
         bouton->setIconSize(QSize(72,72));
         bouton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        bouton->setFont( QFont( "Raavi", 12, QFont::Bold ) );
-        bouton->setFixedSize( 160, 110 );
+        bouton->setFont( QFont( "Raavi", 11, QFont::Bold ) );
+        bouton->setFixedSize( 165, 110 );
         connect( bouton, SIGNAL(clicked()), this, SLOT(ajouterEnDette()) );
         listBouton.append(bouton);
 
@@ -359,9 +391,10 @@ void MainWindow::supprimerClient()
     }
 }
 
-void MainWindow::recherche(QString text)
+void MainWindow::changerLimiteDette()
 {
-
+    FenetreChangerLimiteDette fenetre( this );
+    fenetre.exec();
+    updateLabelDette();
+    updateAllClient();
 }
-
-

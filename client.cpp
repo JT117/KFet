@@ -69,10 +69,14 @@ void CClient::setNumLigne(int row)
 
 void CClient::ajouterDette( double somme )
 {
-    fCLIdette += somme;
+    fCLIdette += (float)somme;
 }
 
 void CClient::ajouterApprovisionnement( double somme )
 {
-    fCLIdette -= somme;
+    fCLIdette -= (float)somme;
+}
+void CClient::setDette(float value)
+{
+    fCLIdette = value;
 }

@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue 31. Jan 09:13:24 2012
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
+** Created: Tue 7. Feb 15:29:11 2012
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../mainwindow.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.7.4. It"
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,10 +20,10 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_MainWindow[] = {
 
  // content:
-       5,       // revision
+       6,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,8 +42,10 @@ static const uint qt_meta_data_MainWindow[] = {
      165,   11,   11,   11, 0x0a,
      180,   11,   11,   11, 0x0a,
      197,   11,   11,   11, 0x0a,
-     220,  215,   11,   11, 0x0a,
-     239,   11,   11,   11, 0x0a,
+     215,   11,   11,   11, 0x0a,
+     231,   11,   11,   11, 0x0a,
+     252,   11,   11,   11, 0x0a,
+     271,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -55,12 +57,44 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "ouvrirAjoutEnDette()\0rendreUser()\0"
     "updateProduit()\0updateClient()\0"
     "ajouterEnDette()\0supprimerClient()\0"
-    "text\0recherche(QString)\0editionClient()\0"
+    "editionClient()\0changerLimiteDette()\0"
+    "updateLabelDette()\0setDette()\0"
+};
+
+void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        MainWindow *_t = static_cast<MainWindow *>(_o);
+        switch (_id) {
+        case 0: _t->ouvrirGestionProduit(); break;
+        case 1: _t->ouvrirLogin(); break;
+        case 2: _t->ouvrirChangerMDP(); break;
+        case 3: _t->ouvrirAjoutClient(); break;
+        case 4: _t->ouvrirApproviosionnement(); break;
+        case 5: _t->ouvrirAjoutEnDette(); break;
+        case 6: _t->rendreUser(); break;
+        case 7: _t->updateProduit(); break;
+        case 8: _t->updateClient(); break;
+        case 9: _t->ajouterEnDette(); break;
+        case 10: _t->supprimerClient(); break;
+        case 11: _t->editionClient(); break;
+        case 12: _t->changerLimiteDette(); break;
+        case 13: _t->updateLabelDette(); break;
+        case 14: _t->setDette(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData MainWindow::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow,
-      qt_meta_data_MainWindow, 0 }
+      qt_meta_data_MainWindow, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -86,23 +120,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: ouvrirGestionProduit(); break;
-        case 1: ouvrirLogin(); break;
-        case 2: ouvrirChangerMDP(); break;
-        case 3: ouvrirAjoutClient(); break;
-        case 4: ouvrirApproviosionnement(); break;
-        case 5: ouvrirAjoutEnDette(); break;
-        case 6: rendreUser(); break;
-        case 7: updateProduit(); break;
-        case 8: updateClient(); break;
-        case 9: ajouterEnDette(); break;
-        case 10: supprimerClient(); break;
-        case 11: recherche((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 12: editionClient(); break;
-        default: ;
-        }
-        _id -= 13;
+        if (_id < 15)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 15;
     }
     return _id;
 }

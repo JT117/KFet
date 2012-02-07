@@ -38,7 +38,7 @@ void CFenetreMiseEnDette::validation()
 
         CLog::ecrire( "Dette de : " + QString::number( ui->spinBox->value() ) + " à " + client->getNom() + " " + client->getPrenom() );
 
-        QMessageBox::information( this, "KFet", "Vous avez bien ajouté " + QString::number( ui->spinBox->value() ) + "€ en dette à " + client->getNom() +
+        QMessageBox::information( this, "KFet", "Vous avez bien ajouté " + QString::number( ui->spinBox->value() ) + QString(8364) +" en dette à " + client->getNom() +
                                   " " + client->getPrenom() );
 
         mainWindow->updateClient();

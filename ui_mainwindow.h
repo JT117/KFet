@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue 31. Jan 09:10:53 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 21:56:21 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -40,17 +40,14 @@ public:
     QAction *actionChanger_mot_de_passe_Admin;
     QAction *actionQuitter;
     QAction *actionA_propros;
+    QAction *actionLimite_de_dette;
     QWidget *centralwidget;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout_2;
-    QTabWidget *tabWidget;
-    QGridLayout *gridLayout_6;
-    QWidget *horizontalLayoutWidget_2;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_4;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label;
+    QLabel *labelDette;
     QPushButton *supprTextRecherche;
-    QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *addMoney;
@@ -61,6 +58,10 @@ public:
     QPushButton *delContact;
     QFrame *line_2;
     QPushButton *manageProduct;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_2;
+    QTabWidget *tabWidget;
+    QGridLayout *gridLayout_6;
     QMenuBar *menubar;
     QMenu *menuFichier;
     QMenu *menuOutils;
@@ -88,18 +89,118 @@ public:
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
         actionA_propros = new QAction(MainWindow);
         actionA_propros->setObjectName(QString::fromUtf8("actionA_propros"));
+        actionLimite_de_dette = new QAction(MainWindow);
+        actionLimite_de_dette->setObjectName(QString::fromUtf8("actionLimite_de_dette"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        horizontalLayoutWidget = new QWidget(centralwidget);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 50, 981, 611));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        centralwidget->setLayoutDirection(Qt::LeftToRight);
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(1, -1, 991, 661));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        labelDette = new QLabel(verticalLayoutWidget);
+        labelDette->setObjectName(QString::fromUtf8("labelDette"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Raavi"));
+        font1.setPointSize(14);
+        font1.setBold(true);
+        font1.setWeight(75);
+        labelDette->setFont(font1);
+
+        horizontalLayout_3->addWidget(labelDette);
+
+        supprTextRecherche = new QPushButton(verticalLayoutWidget);
+        supprTextRecherche->setObjectName(QString::fromUtf8("supprTextRecherche"));
+        supprTextRecherche->setFlat(true);
+
+        horizontalLayout_3->addWidget(supprTextRecherche);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        addMoney = new QPushButton(verticalLayoutWidget);
+        addMoney->setObjectName(QString::fromUtf8("addMoney"));
+        addMoney->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(addMoney);
+
+        subMoney = new QPushButton(verticalLayoutWidget);
+        subMoney->setObjectName(QString::fromUtf8("subMoney"));
+        subMoney->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(subMoney);
+
+        line = new QFrame(verticalLayoutWidget);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line);
+
+        addContact = new QPushButton(verticalLayoutWidget);
+        addContact->setObjectName(QString::fromUtf8("addContact"));
+        addContact->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(addContact);
+
+        edition = new QPushButton(verticalLayoutWidget);
+        edition->setObjectName(QString::fromUtf8("edition"));
+        edition->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(edition);
+
+        delContact = new QPushButton(verticalLayoutWidget);
+        delContact->setObjectName(QString::fromUtf8("delContact"));
+        delContact->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(delContact);
+
+        line_2 = new QFrame(verticalLayoutWidget);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line_2);
+
+        manageProduct = new QPushButton(verticalLayoutWidget);
+        manageProduct->setObjectName(QString::fromUtf8("manageProduct"));
+        manageProduct->setIconSize(QSize(48, 48));
+
+        horizontalLayout_2->addWidget(manageProduct);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout_2);
+
+
+        horizontalLayout_4->addLayout(horizontalLayout_3);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        tabWidget = new QTabWidget(horizontalLayoutWidget);
+        verticalLayout_2->setSizeConstraint(QLayout::SetMinimumSize);
+        tabWidget = new QTabWidget(verticalLayoutWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
+        tabWidget->setSizePolicy(sizePolicy);
+        tabWidget->setElideMode(Qt::ElideNone);
 
         verticalLayout_2->addWidget(tabWidget);
 
@@ -109,93 +210,13 @@ public:
         gridLayout_6 = new QGridLayout();
         gridLayout_6->setSpacing(0);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        gridLayout_6->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout_6->setSizeConstraint(QLayout::SetMaximumSize);
         gridLayout_6->setContentsMargins(-1, -1, 0, -1);
 
         horizontalLayout->addLayout(gridLayout_6);
 
-        horizontalLayoutWidget_2 = new QWidget(centralwidget);
-        horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 0, 331, 41));
-        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(horizontalLayoutWidget_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Raavi"));
-        font1.setPointSize(14);
-        font1.setBold(true);
-        font1.setWeight(75);
-        label->setFont(font1);
 
-        horizontalLayout_3->addWidget(label);
-
-        supprTextRecherche = new QPushButton(horizontalLayoutWidget_2);
-        supprTextRecherche->setObjectName(QString::fromUtf8("supprTextRecherche"));
-        supprTextRecherche->setFlat(true);
-
-        horizontalLayout_3->addWidget(supprTextRecherche);
-
-        horizontalLayoutWidget_3 = new QWidget(centralwidget);
-        horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(380, 0, 611, 61));
-        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_3);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-        addMoney = new QPushButton(horizontalLayoutWidget_3);
-        addMoney->setObjectName(QString::fromUtf8("addMoney"));
-        addMoney->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(addMoney);
-
-        subMoney = new QPushButton(horizontalLayoutWidget_3);
-        subMoney->setObjectName(QString::fromUtf8("subMoney"));
-        subMoney->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(subMoney);
-
-        line = new QFrame(horizontalLayoutWidget_3);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setFrameShape(QFrame::VLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        horizontalLayout_2->addWidget(line);
-
-        addContact = new QPushButton(horizontalLayoutWidget_3);
-        addContact->setObjectName(QString::fromUtf8("addContact"));
-        addContact->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(addContact);
-
-        edition = new QPushButton(horizontalLayoutWidget_3);
-        edition->setObjectName(QString::fromUtf8("edition"));
-        edition->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(edition);
-
-        delContact = new QPushButton(horizontalLayoutWidget_3);
-        delContact->setObjectName(QString::fromUtf8("delContact"));
-        delContact->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(delContact);
-
-        line_2 = new QFrame(horizontalLayoutWidget_3);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setFrameShape(QFrame::VLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-
-        horizontalLayout_2->addWidget(line_2);
-
-        manageProduct = new QPushButton(horizontalLayoutWidget_3);
-        manageProduct->setObjectName(QString::fromUtf8("manageProduct"));
-        manageProduct->setIconSize(QSize(48, 48));
-
-        horizontalLayout_2->addWidget(manageProduct);
+        verticalLayout->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -217,6 +238,7 @@ public:
         menubar->addAction(menu->menuAction());
         menuFichier->addAction(actionQuitter);
         menuOutils->addAction(actionGestion_des_produits);
+        menuOutils->addAction(actionLimite_de_dette);
         menuOutils->addAction(actionSuper_Utilisateur);
         menuOutils->addAction(actionChanger_mot_de_passe_Admin);
         menuOutils->addAction(actionSe_deconnecter);
@@ -240,7 +262,8 @@ public:
         actionChanger_mot_de_passe_Admin->setText(QApplication::translate("MainWindow", "Changer mot de passe Admin", 0, QApplication::UnicodeUTF8));
         actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0, QApplication::UnicodeUTF8));
         actionA_propros->setText(QApplication::translate("MainWindow", "A propros", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "La dette limite est de 10 \342\202\254", 0, QApplication::UnicodeUTF8));
+        actionLimite_de_dette->setText(QApplication::translate("MainWindow", "Limite de dette", 0, QApplication::UnicodeUTF8));
+        labelDette->setText(QApplication::translate("MainWindow", "La dette limite est de 10 \342\202\254", 0, QApplication::UnicodeUTF8));
         supprTextRecherche->setText(QString());
 #ifndef QT_NO_TOOLTIP
         addMoney->setToolTip(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

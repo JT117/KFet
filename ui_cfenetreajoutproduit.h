@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetreajoutproduit.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:56 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -125,7 +125,7 @@ public:
 
     void retranslateUi(QDialog *CFenetreAjoutProduit)
     {
-        CFenetreAjoutProduit->setWindowTitle(QApplication::translate("CFenetreAjoutProduit", "Dialog", 0, QApplication::UnicodeUTF8));
+        CFenetreAjoutProduit->setWindowTitle(QApplication::translate("CFenetreAjoutProduit", "KFet - Ajout d'un produit", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CFenetreAjoutProduit", "Nom Produit", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("CFenetreAjoutProduit", "Prix", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("CFenetreAjoutProduit", "Image :", 0, QApplication::UnicodeUTF8));

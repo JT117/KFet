@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cfenetrelogin.h'
 **
-** Created: Tue 31. Jan 09:13:29 2012
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
+** Created: Tue 7. Feb 15:29:12 2012
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../cfenetrelogin.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'cfenetrelogin.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.7.4. It"
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_CFenetreLogin[] = {
 
  // content:
-       5,       // revision
+       6,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -40,9 +40,26 @@ static const char qt_meta_stringdata_CFenetreLogin[] = {
     "CFenetreLogin\0\0login()\0"
 };
 
+void CFenetreLogin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        CFenetreLogin *_t = static_cast<CFenetreLogin *>(_o);
+        switch (_id) {
+        case 0: _t->login(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData CFenetreLogin::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
 const QMetaObject CFenetreLogin::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_CFenetreLogin,
-      qt_meta_data_CFenetreLogin, 0 }
+      qt_meta_data_CFenetreLogin, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -68,10 +85,8 @@ int CFenetreLogin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: login(); break;
-        default: ;
-        }
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 1;
     }
     return _id;

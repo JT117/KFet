@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>KFet - Edition d'un client</string>
   </property>
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">

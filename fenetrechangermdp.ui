@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>KFet</string>
+   <string>KFet - Changer de mot de passe</string>
   </property>
   <property name="modal">
    <bool>true</bool>

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetregestionproduit.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:56 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -129,7 +129,7 @@ public:
 
     void retranslateUi(QDialog *CFenetreGestionProduit)
     {
-        CFenetreGestionProduit->setWindowTitle(QApplication::translate("CFenetreGestionProduit", "Dialog", 0, QApplication::UnicodeUTF8));
+        CFenetreGestionProduit->setWindowTitle(QApplication::translate("CFenetreGestionProduit", "KFet - Gestion de produit", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         ppbFGPajouter->setToolTip(QApplication::translate("CFenetreGestionProduit", "Ajouter", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'fenetreeditionclient.ui'
 **
-** Created: Tue 31. Jan 09:10:53 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:57 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -109,7 +109,7 @@ public:
 
     void retranslateUi(QDialog *FenetreEditionClient)
     {
-        FenetreEditionClient->setWindowTitle(QApplication::translate("FenetreEditionClient", "Dialog", 0, QApplication::UnicodeUTF8));
+        FenetreEditionClient->setWindowTitle(QApplication::translate("FenetreEditionClient", "KFet - Edition d'un client", 0, QApplication::UnicodeUTF8));
         prenomLabel->setText(QApplication::translate("FenetreEditionClient", "Prenom", 0, QApplication::UnicodeUTF8));
         promoLabel->setText(QApplication::translate("FenetreEditionClient", "Promo", 0, QApplication::UnicodeUTF8));
         nomLabel->setText(QApplication::translate("FenetreEditionClient", "Nom", 0, QApplication::UnicodeUTF8));

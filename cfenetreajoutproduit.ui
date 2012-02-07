@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>KFet - Ajout d'un produit</string>
   </property>
   <property name="modal">
    <bool>true</bool>

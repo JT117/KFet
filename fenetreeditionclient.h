@@ -6,6 +6,7 @@
 #include "client.h"
 #include "cgestionbdd.h"
 #include "clog.h"
+#include "settings.h"
 
 namespace Ui {
 class FenetreEditionClient;

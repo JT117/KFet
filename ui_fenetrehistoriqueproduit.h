@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'fenetrehistoriqueproduit.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:57 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -100,7 +100,7 @@ public:
 
     void retranslateUi(QDialog *fenetreHistoriqueProduit)
     {
-        fenetreHistoriqueProduit->setWindowTitle(QApplication::translate("fenetreHistoriqueProduit", "Dialog", 0, QApplication::UnicodeUTF8));
+        fenetreHistoriqueProduit->setWindowTitle(QApplication::translate("fenetreHistoriqueProduit", "KFet - Historique", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("fenetreHistoriqueProduit", "Quantit\303\251", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("fenetreHistoriqueProduit", "Semaine", 0, QApplication::UnicodeUTF8));
         titre->setText(QString());

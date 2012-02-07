@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'fenetrechangermdp.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:56 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -100,7 +100,7 @@ public:
 
     void retranslateUi(QDialog *FenetreChangerMDP)
     {
-        FenetreChangerMDP->setWindowTitle(QApplication::translate("FenetreChangerMDP", "KFet", 0, QApplication::UnicodeUTF8));
+        FenetreChangerMDP->setWindowTitle(QApplication::translate("FenetreChangerMDP", "KFet - Changer de mot de passe", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("FenetreChangerMDP", "Ancien mot de passe", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("FenetreChangerMDP", "Nouveau mot de passe", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("FenetreChangerMDP", "Confirmation mot de passe", 0, QApplication::UnicodeUTF8));

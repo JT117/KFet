@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>KFet - Historique</string>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">

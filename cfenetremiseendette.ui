@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>KFet - Mise en Dette</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -28,7 +28,7 @@
       <property name="font">
        <font>
         <family>Raavi</family>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -45,6 +45,12 @@
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>Raavi</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Somme : </string>
         </property>
@@ -52,6 +58,12 @@
       </item>
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="spinBox">
+        <property name="font">
+         <font>
+          <family>Raavi</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="maximum">
          <double>500.000000000000000</double>
         </property>

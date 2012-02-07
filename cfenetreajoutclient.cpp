@@ -9,15 +9,7 @@ CFenetreAjoutClient::CFenetreAjoutClient(MainWindow* main, QWidget *parent) :
 
     mainWindow = main;
 
-    ui->promoComboBox->addItem( "DI3");
-    ui->promoComboBox->addItem( "DI4");
-    ui->promoComboBox->addItem( "DI5");
-    ui->promoComboBox->addItem( "DA3");
-    ui->promoComboBox->addItem( "DA4");
-    ui->promoComboBox->addItem( "DA5");
-    ui->promoComboBox->addItem( "DP3");
-    ui->promoComboBox->addItem( "DP4");
-    ui->promoComboBox->addItem( "DP5");
+    ui->promoComboBox->addItems( Settings::getTablist() );
 
     connect( ui->boutonAjouter, SIGNAL(clicked()), this, SLOT(validation()) );
     connect( ui->boutonAnnuler, SIGNAL(clicked()), this, SLOT(close()) );

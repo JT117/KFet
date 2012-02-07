@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetremiseendette.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:23:15 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -56,7 +56,7 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("Raavi"));
-        font.setPointSize(10);
+        font.setPointSize(11);
         font.setBold(true);
         font.setWeight(75);
         label->setFont(font);
@@ -68,11 +68,16 @@ public:
         formLayout->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
         label_2 = new QLabel(verticalLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Raavi"));
+        font1.setPointSize(11);
+        label_2->setFont(font1);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
         spinBox = new QDoubleSpinBox(verticalLayoutWidget);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBox->setFont(font1);
         spinBox->setMaximum(500);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, spinBox);
@@ -107,7 +112,7 @@ public:
 
     void retranslateUi(QDialog *CFenetreMiseEnDette)
     {
-        CFenetreMiseEnDette->setWindowTitle(QApplication::translate("CFenetreMiseEnDette", "Dialog", 0, QApplication::UnicodeUTF8));
+        CFenetreMiseEnDette->setWindowTitle(QApplication::translate("CFenetreMiseEnDette", "KFet - Mise en Dette", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CFenetreMiseEnDette", "Rappel : vous ajoutez une somme en dette", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("CFenetreMiseEnDette", "Somme : ", 0, QApplication::UnicodeUTF8));
         boutonAjouter->setText(QApplication::translate("CFenetreMiseEnDette", "Ajouter", 0, QApplication::UnicodeUTF8));

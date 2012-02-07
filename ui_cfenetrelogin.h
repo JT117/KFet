@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cfenetrelogin.ui'
 **
-** Created: Mon 30. Jan 20:54:50 2012
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Mon 6. Feb 22:18:56 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -77,7 +77,7 @@ public:
 
     void retranslateUi(QDialog *CFenetreLogin)
     {
-        CFenetreLogin->setWindowTitle(QApplication::translate("CFenetreLogin", "Login", 0, QApplication::UnicodeUTF8));
+        CFenetreLogin->setWindowTitle(QApplication::translate("CFenetreLogin", "KFet - Login", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("CFenetreLogin", "Password :", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

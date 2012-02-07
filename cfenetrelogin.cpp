@@ -26,12 +26,12 @@ void CFenetreLogin::login()
     if( CGestionBDD::identification( ui->lineEdit->text() ) )
     {
         qDebug() << "Succes" << endl;
-        QMessageBox::information( this, "KFet", "Vous avez maintenant tous les doits sur le logiciel");
+        QMessageBox::information( this, "KFet", "Vous avez maintenant tous les droits sur le logiciel");
         fenetrePrincipale->rendreAdmin();
     }
     else
     {
         qDebug() << "Acces Denied"  << endl;
-        QMessageBox::warning( this, "KFet", "L'authentification a echouée. Veuillez recommencer");
+        QMessageBox::warning( this, "KFet", "L'authentification a echoué. Veuillez recommencer");
     }
 }

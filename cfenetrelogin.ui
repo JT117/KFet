@@ -19,7 +19,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>KFet - Login</string>
   </property>
   <property name="modal">
    <bool>true</bool>

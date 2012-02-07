@@ -18,6 +18,7 @@ public:
     float getDette();
     void setID( int id );
     void setNom( QString nom);
+    void setDette( float value);
     void setNumLigne( int row );
     int getNumLigne()const;
     void ajouterDette(double somme);

@@ -30,7 +30,10 @@ SOURCES += main.cpp\
     cfenetreapprovisionnement.cpp \
     cfenetremiseendette.cpp \
     fenetrehistoriqueproduit.cpp \
-    fenetreeditionclient.cpp
+    fenetreeditionclient.cpp \
+    fenetrechangerlimitedette.cpp \
+    settings.cpp \
+    fenetresetdette.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -47,7 +50,10 @@ HEADERS  += \
     cfenetreapprovisionnement.h \
     cfenetremiseendette.h \
     fenetrehistoriqueproduit.h \
-    fenetreeditionclient.h
+    fenetreeditionclient.h \
+    fenetrechangerlimitedette.h \
+    settings.h \
+    fenetresetdette.h
 
 FORMS    += \
     mainwindow.ui \
@@ -59,7 +65,9 @@ FORMS    += \
     cfenetreapprovisionnement.ui \
     cfenetremiseendette.ui \
     fenetrehistoriqueproduit.ui \
-    fenetreeditionclient.ui
+    fenetreeditionclient.ui \
+    fenetrechangerlimitedette.ui \
+    fenetresetdette.ui
 
 
 

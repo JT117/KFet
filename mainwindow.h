@@ -10,6 +10,8 @@
 #include <QMessageBox>
 #include <QList>
 #include <QVariant>
+#include <QHBoxLayout>
+#include <QContextMenuEvent>
 
 #include "cfenetregestionproduit.h"
 #include "product.h"
@@ -24,6 +26,9 @@
 #include "tab.h"
 #include "fenetrehistoriqueproduit.h"
 #include "fenetreeditionclient.h"
+#include "fenetrechangerlimitedette.h"
+#include "settings.h"
+#include "fenetresetdette.h"
 
 namespace Ui {
     class MainWindow;
@@ -53,8 +58,10 @@ public slots:
     void updateClient();
     void ajouterEnDette();
     void supprimerClient();
-    void recherche(QString text );
     void editionClient();
+    void changerLimiteDette();
+    void updateLabelDette();
+    void setDette();
 
 private:
     Ui::MainWindow *ui;
@@ -66,6 +73,7 @@ private:
     bool admin;
 
     void construirePanneauProduit();
+    void contextMenuEvent( QContextMenuEvent * event );
 };
 
 #endif // MAINWINDOW_H
