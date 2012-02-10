@@ -61,7 +61,11 @@ void CGestionBDD::addProduct( CProduct& product )
     if( CGestionBDD::connectionBDD() )
     {
         QSqlQuery query(db);
-        query.exec( "INSERT INTO Product (nom, prix, cheminImage ) VALUES ( '" + product.getNom().replace( "'", "''") + "', '" + product.getPrix().replace( "'", "''") + "', '"+ product.getChemin().replace( "'", "''") + "' );" );
+        query.exec( "INSERT INTO Product (nom, prix, cheminImage ) VALUES ( '" + product.getNom().replace( "'", "''") +
+                    "', '" + product.getPrix().replace( "'", "''") + "', '"+ product.getChemin().replace( "'", "''") + "' );" );
+         QList<int> liste = Settings::getBoutonList();
+         liste.append( query.lastInsertId().toInt() );
+         Settings::setBoutonList( liste );
         db.close();
     }
     else
@@ -76,7 +80,12 @@ void CGestionBDD::removeProduct( CProduct& product )
     {
         QSqlQuery query(db);
         query.exec( "DELETE FROM PRODUCT WHERE id = '"+ QString::number( product.getId() ) +"';" );
-        db.close();    }
+        QList<int> liste = Settings::getBoutonList();
+        Settings::clearBouton();
+        liste.removeOne( product.getId() );
+        Settings::setBoutonList( liste );
+        db.close();
+    }
     else
     {
         QMessageBox::warning( 0, "Avertissement", "La base de données n'a pas pu être ouverte." );

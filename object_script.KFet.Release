@@ -18,6 +18,7 @@ INPUT(
 ./release/fenetrechangerlimitedette.o
 ./release/settings.o
 ./release/fenetresetdette.o
+./release/toolbutton.o
 ./release/moc_mainwindow.o
 ./release/moc_cfenetreajoutproduit.o
 ./release/moc_cfenetregestionproduit.o

@@ -30,6 +30,8 @@
 #include "settings.h"
 #include "fenetresetdette.h"
 
+class ToolButton;
+
 namespace Ui {
     class MainWindow;
 }
@@ -67,7 +69,7 @@ private:
     Ui::MainWindow *ui;
     QTableWidget* etuTable;
     QList<CProduct*> listProduct;
-    QList<QToolButton*> listBouton;
+    QList<ToolButton*> listBouton;
     QList<CTab*> listTab;
 
     bool admin;

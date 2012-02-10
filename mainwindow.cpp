@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "toolbutton.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -43,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->supprTextRecherche->setVisible(false);
     ui->actionLimite_de_dette->setEnabled( false );
 
-    ui->addContact->setIcon( QIcon(QDir::currentPath()+"/systeme/image/add_user.gif") );
+    ui->addContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_user.gif") );
     ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ) );
     ui->delContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/del_user.png" ) );
     ui->subMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/sub_money.png" ) );
@@ -219,21 +220,24 @@ void MainWindow::updateAllClient()
     }
 }
 
-
 void MainWindow::construirePanneauProduit()
 {
-    CGestionBDD::getProductList( listProduct );
+    QList<int> listIdBouton = Settings::getBoutonList();
 
     int ligne = 0;
-    for( int iBoucle = 0; iBoucle < listProduct.size(); iBoucle++ )
+    for( int iBoucle = 0; iBoucle < listIdBouton.size(); iBoucle++ )
     {
-        listProduct.at(iBoucle)->setNumBouton(iBoucle);
+        CProduct product = CGestionBDD::getProduct( listIdBouton[iBoucle] );
+        product.setNumBouton(iBoucle);
 
-        QToolButton* bouton = new QToolButton();
-        bouton->setIcon( QIcon( QDir::currentPath()+listProduct[iBoucle]->getChemin() ) );
-        bouton->setText( listProduct[iBoucle]->getNom()+" "+listProduct[iBoucle]->getPrix()+ QString(8364) );
-        bouton->setIconSize(QSize(72,72));
-        bouton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        CProduct* produit = new CProduct( product );
+        listProduct.append( produit );
+
+        ToolButton* bouton = new ToolButton( ui->gridLayout_6, iBoucle, this );
+        bouton->setIcon( QIcon( QDir::currentPath() + product.getChemin() ) );
+        bouton->setText( product.getNom() + " " + product.getPrix() + QString(8364) );
+        bouton->setIconSize( QSize( 72, 72 ) );
+        bouton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
         bouton->setFont( QFont( "Raavi", 11, QFont::Bold ) );
         bouton->setFixedSize( 165, 110 );
         connect( bouton, SIGNAL(clicked()), this, SLOT(ajouterEnDette()) );
@@ -301,7 +305,7 @@ void MainWindow::ajouterEnDette()
     if( this->clientSelectionner() )
     {
         QObject* object = QObject::sender();
-        QToolButton* bouton = (QToolButton*)object;
+        ToolButton* bouton = (ToolButton*)object;
         int numBouton = -1;
 
         for( int i = 0; i < listBouton.size(); i++ )

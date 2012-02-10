@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     fenetreeditionclient.cpp \
     fenetrechangerlimitedette.cpp \
     settings.cpp \
-    fenetresetdette.cpp
+    fenetresetdette.cpp \
+    toolbutton.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS  += \
     fenetreeditionclient.h \
     fenetrechangerlimitedette.h \
     settings.h \
-    fenetresetdette.h
+    fenetresetdette.h \
+    toolbutton.h
 
 FORMS    += \
     mainwindow.ui \

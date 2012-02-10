@@ -53,7 +53,7 @@ void CTab::setupClient()
             couleur.setRgb( 104, 255, 122 );
         }
         else if( ( nom == "KFtier" && listClient.at(i)->getDette() >= Settings::getDetteKFtier() ) ||
-                   nom != "KFtier" && listClient.at(i)->getDette() >= Settings::getDetteClient() )
+                 ( nom != "KFtier" && listClient.at(i)->getDette() >= Settings::getDetteClient() ) )
         {
             couleur.setRgb( 255, 95, 25 );
         }

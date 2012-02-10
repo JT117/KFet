@@ -14,6 +14,7 @@
 #include "product.h"
 #include "client.h"
 #include "product.h"
+#include "settings.h"
 
 class CGestionBDD
 {

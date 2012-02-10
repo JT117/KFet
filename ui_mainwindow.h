@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon 6. Feb 21:56:21 2012
+** Created: Fri 10. Feb 11:50:41 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -93,6 +93,7 @@ public:
         actionLimite_de_dette->setObjectName(QString::fromUtf8("actionLimite_de_dette"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setAcceptDrops(true);
         centralwidget->setLayoutDirection(Qt::LeftToRight);
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));

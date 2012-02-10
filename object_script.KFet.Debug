@@ -18,6 +18,7 @@ INPUT(
 ./debug/fenetrechangerlimitedette.o
 ./debug/settings.o
 ./debug/fenetresetdette.o
+./debug/toolbutton.o
 ./debug/moc_mainwindow.o
 ./debug/moc_cfenetreajoutproduit.o
 ./debug/moc_cfenetregestionproduit.o
