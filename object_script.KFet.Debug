@@ -15,6 +15,9 @@ INPUT(
 ./debug/cfenetremiseendette.o
 ./debug/fenetrehistoriqueproduit.o
 ./debug/fenetreeditionclient.o
+./debug/fenetrechangerlimitedette.o
+./debug/settings.o
+./debug/fenetresetdette.o
 ./debug/moc_mainwindow.o
 ./debug/moc_cfenetreajoutproduit.o
 ./debug/moc_cfenetregestionproduit.o
@@ -25,4 +28,6 @@ INPUT(
 ./debug/moc_cfenetremiseendette.o
 ./debug/moc_fenetrehistoriqueproduit.o
 ./debug/moc_fenetreeditionclient.o
+./debug/moc_fenetrechangerlimitedette.o
+./debug/moc_fenetresetdette.o
 );

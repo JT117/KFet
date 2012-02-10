@@ -15,6 +15,9 @@ INPUT(
 ./release/cfenetremiseendette.o
 ./release/fenetrehistoriqueproduit.o
 ./release/fenetreeditionclient.o
+./release/fenetrechangerlimitedette.o
+./release/settings.o
+./release/fenetresetdette.o
 ./release/moc_mainwindow.o
 ./release/moc_cfenetreajoutproduit.o
 ./release/moc_cfenetregestionproduit.o
@@ -25,4 +28,6 @@ INPUT(
 ./release/moc_cfenetremiseendette.o
 ./release/moc_fenetrehistoriqueproduit.o
 ./release/moc_fenetreeditionclient.o
+./release/moc_fenetrechangerlimitedette.o
+./release/moc_fenetresetdette.o
 );
