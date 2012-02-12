@@ -11,6 +11,7 @@ FenetreSetDette::FenetreSetDette(int index, QWidget *parent) :
     ancienneValeur = client.getDette();
 
     ui->doubleSpinBox->setValue( ancienneValeur );
+    ui->doubleSpinBox->setFocus();
 
     connect( ui->boutonOK, SIGNAL(clicked()), this, SLOT( validation() ) );
     connect( ui->boutonAnnuler, SIGNAL(clicked()), this, SLOT(close() ) );

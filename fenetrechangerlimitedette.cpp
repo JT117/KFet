@@ -17,6 +17,8 @@ FenetreChangerLimiteDette::FenetreChangerLimiteDette(QWidget *parent) :
     ui->spinBoxClient->setValue( (double)detteClient );
     ui->spinBoxKFtier->setValue( (double)detteKFtier );
 
+    ui->spinBoxClient->setFocus();
+
     connect( ui->boutonOk, SIGNAL(clicked()), this, SLOT(validation()) );
 }
 

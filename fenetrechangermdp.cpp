@@ -7,6 +7,8 @@ FenetreChangerMDP::FenetreChangerMDP(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->lineEdit->setFocus();
+
     connect( ui->buttonBox, SIGNAL(accepted()), this, SLOT(changerMotDePasse()) );
 }
 

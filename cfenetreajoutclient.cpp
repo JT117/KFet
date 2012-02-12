@@ -10,6 +10,7 @@ CFenetreAjoutClient::CFenetreAjoutClient(MainWindow* main, QWidget *parent) :
     mainWindow = main;
 
     ui->promoComboBox->addItems( Settings::getTablist() );
+    ui->nomLineEdit->setFocus();
 
     connect( ui->boutonAjouter, SIGNAL(clicked()), this, SLOT(validation()) );
     connect( ui->boutonAnnuler, SIGNAL(clicked()), this, SLOT(close()) );

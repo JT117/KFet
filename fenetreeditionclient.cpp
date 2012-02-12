@@ -9,6 +9,8 @@ FenetreEditionClient::FenetreEditionClient( int id, QWidget *parent) :
 
     client = CGestionBDD::getClient( id );
 
+    ui->nomLineEdit->setFocus();
+
     ui->nomLineEdit->setText( client.getNom() );
     ui->prenomLineEdit->setText( client.getPrenom() );
 

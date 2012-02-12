@@ -10,6 +10,8 @@ CFenetreApprovisionnement::CFenetreApprovisionnement(MainWindow* main, CClient* 
     mainWindow = main;
     client = client1;
 
+    ui->spinBox->setFocus();
+
     connect( ui->boutonAnnuler, SIGNAL(clicked()), this, SLOT(close()) );
     connect( ui->boutonAjouter, SIGNAL(clicked()), this, SLOT(validation()) );
 }

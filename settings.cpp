@@ -68,7 +68,14 @@ void Settings::setBoutonList( QList<int> liste )
 
     for( int i = 0; i < liste.size(); i++ )
     {
-        settings.setValue( "bouton" + QString::number( i ), liste.at(i) );
+        if( i < 10 )
+        {
+            settings.setValue( "bouton0" + QString::number( i ), liste.at(i) );
+        }
+        else
+        {
+             settings.setValue( "bouton" + QString::number( i ), liste.at(i) );
+        }
     }
 
     settings.endGroup();
