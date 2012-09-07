@@ -7,19 +7,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     admin = false;
 
-    QStringList listeNomTab = Settings::getTablist();
-
-    for( int i = 0; i < listeNomTab.size(); i++ )
-    {
-        CTab* tab = new CTab( listeNomTab.at(i) );
-        ui->tabWidget->addTab( tab, listeNomTab.at(i) );
-        listTab.append( tab );
-    }
-
+    construirePanneauClient();
     construirePanneauProduit();
 
     ui->centralwidget->setLayout( ui->verticalLayout );
     ui->centralwidget->setContentsMargins( 5, 5, 5, 5 );
+
+    ui->tabWidget->setMovable( true );
 
     connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
     connect( ui->actionSuper_Utilisateur, SIGNAL(triggered()), this, SLOT( ouvrirLogin() ) );
@@ -81,6 +75,47 @@ MainWindow::~MainWindow()
     CLog::ecrire( "--------------------------------------------------------------");
 }
 
+void MainWindow::updatePanneauClient()
+{
+    for( int i = 0; i < listTab.size(); i++ )
+    {
+        delete listTab[i];
+    }
+
+    listTab.clear();
+
+    construirePanneauClient();
+}
+
+void MainWindow::construirePanneauClient()
+{
+    QStringList listeNomTab = Settings::getTablist();
+
+    for( int i = 0; i < listeNomTab.size(); i++ )
+    {
+        CTab* tab = new CTab( listeNomTab.at(i) );
+        ui->tabWidget->addTab( tab, listeNomTab.at(i) );
+        listTab.append( tab );
+    }
+
+    CTab* tab = new CTab( "+" );
+    ui->tabWidget->addTab( tab, "+" );
+    listTab.append( tab );
+
+    connect( ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT( changementDeTab(int) ) );
+}
+
+void MainWindow::changementDeTab(int num)
+{
+    if( num == ( listTab.size() - 1 ) )
+    {
+        fenetreNouvelleTab fenetre( this );
+        fenetre.exec();
+
+        updatePanneauClient();
+    }
+}
+
 void MainWindow::setDette()
 {
     CClient* client = getSelectedClient();
@@ -91,7 +126,7 @@ void MainWindow::setDette()
 
 void MainWindow::contextMenuEvent( QContextMenuEvent *event )
 {
-    if( clientSelectionner() && ui->tabWidget->currentWidget()->frameGeometry().contains( this->cursor().pos().x(), this->cursor().pos().y() ) )
+    if( clientSelectionner() )
     {
         QMenu menu(this);
         QAction* actionSetDette = menu.addAction( "Fixer la dette", this, SLOT( setDette() ), 0 );
@@ -207,7 +242,7 @@ void MainWindow::updateProduit()
 
 void MainWindow::updateClient()
 {
-    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
+    CTab* tab = static_cast<CTab*>( ui->tabWidget->widget( ui->tabWidget->currentIndex() ) );
 
     return tab->updateClient();
 }
@@ -260,14 +295,14 @@ void MainWindow::ouvrirAjoutClient()
 
 bool MainWindow::clientSelectionner()
 {
-    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
+    CTab* tab = static_cast<CTab*>( ui->tabWidget->widget( ui->tabWidget->currentIndex() ) );
 
     return tab->clientSelectionner();
 }
 
 CClient* MainWindow::getSelectedClient()
 {
-    CTab* tab = (CTab*)ui->tabWidget->widget( ui->tabWidget->currentIndex() );
+    CTab* tab = static_cast<CTab*>( ui->tabWidget->widget( ui->tabWidget->currentIndex() ) );
 
     return tab->getSelectedClient();
 }
@@ -305,7 +340,7 @@ void MainWindow::ajouterEnDette()
     if( this->clientSelectionner() )
     {
         QObject* object = QObject::sender();
-        ToolButton* bouton = (ToolButton*)object;
+        ToolButton* bouton = static_cast<ToolButton*>( object );
         int numBouton = -1;
 
         for( int i = 0; i < listBouton.size(); i++ )

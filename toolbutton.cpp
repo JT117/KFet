@@ -1,11 +1,6 @@
 #include "toolbutton.h"
 #include "mainwindow.h"
 
-ToolButton::ToolButton() : QToolButton()
-{
-    setAcceptDrops( false ); //Ne pas utiliser
-}
-
 ToolButton::ToolButton(QGridLayout* layout, int numero, MainWindow* main ) : QToolButton(), gridLayout( layout ), numeroDansLaListe( numero ), mainWindow( main )
 {
     setAcceptDrops( true );

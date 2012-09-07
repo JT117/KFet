@@ -18,6 +18,7 @@ public:
     static QList<int> getBoutonList();
     static void setBoutonList( QList<int> liste );
     static void clearBouton();
+    static void setTabList( QStringList liste );
 
 };
 

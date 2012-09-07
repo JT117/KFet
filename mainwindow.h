@@ -29,6 +29,7 @@
 #include "fenetrechangerlimitedette.h"
 #include "settings.h"
 #include "fenetresetdette.h"
+#include "fenetrenouvelletab.h"
 
 class ToolButton;
 
@@ -47,6 +48,7 @@ public:
     bool clientSelectionner();
     CClient* getSelectedClient();
     void updateAllClient();
+    void updatePanneauClient();
 
 public slots:
     void ouvrirGestionProduit();
@@ -64,6 +66,7 @@ public slots:
     void changerLimiteDette();
     void updateLabelDette();
     void setDette();
+    void changementDeTab(int num);
 
 private:
     Ui::MainWindow *ui;
@@ -75,6 +78,7 @@ private:
     bool admin;
 
     void construirePanneauProduit();
+    void construirePanneauClient();
     void contextMenuEvent( QContextMenuEvent * event );
 };
 

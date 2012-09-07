@@ -18,7 +18,6 @@ class MainWindow;
 class ToolButton : public QToolButton
 {
 public:
-    ToolButton();
     ToolButton( QGridLayout* layout, int numero, MainWindow* main );
 
     void mousePressEvent(QMouseEvent* event);

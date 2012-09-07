@@ -9,8 +9,6 @@ QT       += sql
 
 RC_FILE = KFet.rc
 
-CONFIG += help
-
 TARGET = KFet
 TEMPLATE = app
 
@@ -34,7 +32,8 @@ SOURCES += main.cpp\
     fenetrechangerlimitedette.cpp \
     settings.cpp \
     fenetresetdette.cpp \
-    toolbutton.cpp
+    toolbutton.cpp \
+    fenetrenouvelletab.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -55,7 +54,8 @@ HEADERS  += \
     fenetrechangerlimitedette.h \
     settings.h \
     fenetresetdette.h \
-    toolbutton.h
+    toolbutton.h \
+    fenetrenouvelletab.h
 
 FORMS    += \
     mainwindow.ui \
@@ -69,7 +69,8 @@ FORMS    += \
     fenetrehistoriqueproduit.ui \
     fenetreeditionclient.ui \
     fenetrechangerlimitedette.ui \
-    fenetresetdette.ui
+    fenetresetdette.ui \
+    fenetrenouvelletab.ui
 
 
 

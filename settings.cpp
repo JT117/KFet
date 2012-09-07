@@ -41,6 +41,27 @@ QStringList Settings::getTablist()
     return tab;
 }
 
+void Settings::setTabList(QStringList liste)
+{
+    QSettings settings( QDir::currentPath() + "/systeme/setting.ini", QSettings::IniFormat );
+
+    settings.beginGroup("Tab");
+
+    for( int i = 0; i < liste.size(); i++ )
+    {
+        if( i < 10 )
+        {
+            settings.setValue( "Tab0" + QString::number( i ), liste.at(i) );
+        }
+        else
+        {
+             settings.setValue( "Tab" + QString::number( i ), liste.at(i) );
+        }
+    }
+
+    settings.endGroup();
+}
+
 QList<int> Settings::getBoutonList()
 {
     QSettings settings( QDir::currentPath() + "/systeme/setting.ini", QSettings::IniFormat );

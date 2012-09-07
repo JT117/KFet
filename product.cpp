@@ -3,6 +3,7 @@
 CProduct::CProduct()
 {
     iPROnumBouton = -1;
+    iPROid = -1;
 }
 
 CProduct::CProduct( int id, QString nom, QString prix, QString cheminImage ) : iPROid( id ), sPROnom( nom ), sPROprix( prix ), sPROcheminImage( cheminImage )

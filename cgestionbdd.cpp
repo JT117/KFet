@@ -352,8 +352,8 @@ int CGestionBDD::addDate(QString date, QString time)
     {
         QSqlQuery query(db);
         query.exec( "INSERT INTO Date( date, time )VALUES ('" + date + "', '" + time + "');");
-        return query.lastInsertId().toInt();
         db.close();
+        return query.lastInsertId().toInt();
     }
     else
     {
@@ -422,8 +422,8 @@ QList<int> CGestionBDD::getHistorique(int idPro, int nbSemaine)
             date = date.addDays( -7 );
         }
 
-        return listeInt;
         db.close();
+        return listeInt;
     }
     else
     {

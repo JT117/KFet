@@ -1,10 +1,6 @@
 #include "cfenetrelogin.h"
 #include "ui_cfenetrelogin.h"
 
-CFenetreLogin::CFenetreLogin()
-{
-}
-
 CFenetreLogin::CFenetreLogin( MainWindow* main, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CFenetreLogin)
@@ -26,6 +22,7 @@ void CFenetreLogin::login()
     if( CGestionBDD::identification( ui->lineEdit->text() ) )
     {
         qDebug() << "Succes" << endl;
+        QString test = ui->lineEdit->text();
         QMessageBox::information( this, "KFet", "Vous avez maintenant tous les droits sur le logiciel");
         fenetrePrincipale->rendreAdmin();
     }

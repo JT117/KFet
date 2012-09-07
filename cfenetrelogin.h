@@ -17,7 +17,6 @@ class CFenetreLogin : public QDialog
     Q_OBJECT
 
 public:
-    CFenetreLogin();
     explicit CFenetreLogin( MainWindow* main, QWidget* parent = 0 );
     ~CFenetreLogin();
 

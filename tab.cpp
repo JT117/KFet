@@ -2,6 +2,8 @@
 
 CTab::CTab()
 {
+    etuTable = 0;
+    vbox = 0;
 }
 
 CTab::CTab( QString nom1 )
@@ -12,6 +14,8 @@ CTab::CTab( QString nom1 )
     vbox = new QVBoxLayout;
     vbox->addWidget( etuTable );
     this->setLayout( vbox );
+
+    etuTable->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
 
     setupClient();
 }

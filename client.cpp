@@ -4,6 +4,7 @@ CClient::CClient()
 {
     iCLInumLigne = -1;
     fCLIdette = 0;
+    iCLIid = -1;
 }
 
 CClient::CClient( int id, QString nom, QString prenom, float dette, QString promo, QString droit )
