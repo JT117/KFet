@@ -1,4 +1,5 @@
 #include "filterobject.h"
+#include "mainwindow.h"
 
 FilterObject::FilterObject(MainWindow *qMain) : QObject(), mainWindow( qMain )
 {

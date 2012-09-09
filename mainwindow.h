@@ -79,6 +79,7 @@ private:
     QList<CProduct*> listProduct;
     QList<ToolButton*> listBouton;
     QList<CTab*> listTab;
+    FilterObject* filter;
 
     bool admin;
 

@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->centralwidget->setContentsMargins( 5, 5, 5, 5 );
 
     ui->tabWidget->setMovable( true );
-    FilterObject* filter = new FilterObject( this );
+    filter = new FilterObject( this );
     ui->tabWidget->installEventFilter( filter );
 
     connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
@@ -74,6 +74,7 @@ MainWindow::~MainWindow()
     CGestionBDD::deconnectionBDD();
 
     delete ui;
+    delete filter;
 
     CLog::ecrire( "Fermeture de l'application" );
     CLog::ecrire( "--------------------------------------------------------------");

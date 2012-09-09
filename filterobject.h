@@ -6,7 +6,8 @@
 #include <QTabBar>
 #include <QDebug>
 #include <QMouseEvent>
-#include "mainwindow.h"
+
+class MainWindow;
 
 class FilterObject : public QObject
 {
