@@ -271,7 +271,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -296,8 +296,15 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionA_propros"/>
    </widget>
+   <widget class="QMenu" name="menuPromo">
+    <property name="title">
+     <string>Promo</string>
+    </property>
+    <addaction name="actionPromo_UP"/>
+   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuOutils"/>
+   <addaction name="menuPromo"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -334,6 +341,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionLimite_de_dette">
    <property name="text">
     <string>Limite de dette</string>
+   </property>
+  </action>
+  <action name="actionPromo_UP">
+   <property name="text">
+    <string>Promo UP</string>
    </property>
   </action>
  </widget>

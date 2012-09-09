@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->edition, SIGNAL(clicked()), this, SLOT(editionClient()) );
     connect( ui->actionLimite_de_dette, SIGNAL(triggered()), this, SLOT( changerLimiteDette() ) );
     connect( ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(updateLabelDette()) );
+    connect( ui->actionPromo_UP, SIGNAL(triggered()), this, SLOT(promoUp()) );
 
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSe_deconnecter->setVisible(false);
@@ -39,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->manageProduct->setEnabled( false );
     ui->supprTextRecherche->setVisible(false);
     ui->actionLimite_de_dette->setEnabled( false );
+    ui->actionPromo_UP->setEnabled( false );
 
     ui->addContact->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_user.gif") );
     ui->addMoney->setIcon( QIcon( QDir::currentPath()+"/systeme/image/add_money.png" ) );
@@ -125,6 +127,45 @@ void MainWindow::supprOnglet()
     fenetre.exec();
 
     construirePanneauClient();
+}
+
+void MainWindow::promoUp()
+{
+    QMessageBox msgBox;
+    msgBox.setText("Attention vous êtes sur le point de passer une année. Les clients en DI3 se retrouveront en DI4 etc... Etes vous sûr de vouloir faire cela ?");
+    msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+    msgBox.setIcon( QMessageBox::Warning );
+    int ret = msgBox.exec();
+
+    if( ret == QMessageBox::Ok )
+    {
+        CLog::ecrire( "Promo Up éffectué");
+        CGestionBDD::updatePromo( "DI6", "Save" );
+        CGestionBDD::updatePromo( "DI5", "DI6" );
+        CGestionBDD::updatePromo( "DI4", "DI5" );
+        CGestionBDD::updatePromo( "DI3", "DI4" );
+
+        QStringList listTab = Settings::getTablist();
+
+        qDebug() << listTab;
+
+        if( !listTab.contains( "DI3", Qt::CaseInsensitive ) )
+            listTab << "DI3";
+
+        if( !listTab.contains( "DI4", Qt::CaseInsensitive ) )
+            listTab << "DI4";
+
+        if( !listTab.contains( "DI5", Qt::CaseInsensitive ) )
+            listTab << "DI5";
+
+        if( !listTab.contains( "DI6", Qt::CaseInsensitive ) )
+            listTab << "DI6";
+
+        Settings::setTabList( listTab );
+        qDebug() << listTab;
+        construirePanneauClient();
+    }
 }
 
 void MainWindow::setDette()
@@ -234,6 +275,7 @@ void MainWindow::rendreAdmin()
     ui->actionSuper_Utilisateur->setVisible(false);
     ui->actionSe_deconnecter->setVisible(true);
     ui->actionChanger_mot_de_passe_Admin->setVisible(true);
+    ui->actionPromo_UP->setEnabled( true );
     ui->delContact->setEnabled( true );
     ui->subMoney->setEnabled( true );
     ui->manageProduct->setEnabled( true );
@@ -244,6 +286,7 @@ void MainWindow::rendreUser()
 {
     CLog::ecrire( "L'utilisateur perd les droits d'administrateur" );
     admin = false;
+    ui->actionPromo_UP->setEnabled( false );
     ui->actionGestion_des_produits->setEnabled(false);
     ui->actionSuper_Utilisateur->setVisible(true);
     ui->actionSe_deconnecter->setVisible(false);

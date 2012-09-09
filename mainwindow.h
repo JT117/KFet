@@ -71,6 +71,7 @@ public slots:
     void setDette();
     void changementDeTab(int num);
     void supprOnglet();
+    void promoUp();
 
 private:
     Ui::MainWindow *ui;

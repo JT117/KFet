@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri 10. Feb 11:50:41 2012
+** Created: Sun 9. Sep 16:08:31 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -41,6 +41,7 @@ public:
     QAction *actionQuitter;
     QAction *actionA_propros;
     QAction *actionLimite_de_dette;
+    QAction *actionPromo_UP;
     QWidget *centralwidget;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
@@ -66,6 +67,7 @@ public:
     QMenu *menuFichier;
     QMenu *menuOutils;
     QMenu *menu;
+    QMenu *menuPromo;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -91,6 +93,8 @@ public:
         actionA_propros->setObjectName(QString::fromUtf8("actionA_propros"));
         actionLimite_de_dette = new QAction(MainWindow);
         actionLimite_de_dette->setObjectName(QString::fromUtf8("actionLimite_de_dette"));
+        actionPromo_UP = new QAction(MainWindow);
+        actionPromo_UP->setObjectName(QString::fromUtf8("actionPromo_UP"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setAcceptDrops(true);
@@ -222,13 +226,15 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1000, 21));
+        menubar->setGeometry(QRect(0, 0, 1000, 26));
         menuFichier = new QMenu(menubar);
         menuFichier->setObjectName(QString::fromUtf8("menuFichier"));
         menuOutils = new QMenu(menubar);
         menuOutils->setObjectName(QString::fromUtf8("menuOutils"));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
+        menuPromo = new QMenu(menubar);
+        menuPromo->setObjectName(QString::fromUtf8("menuPromo"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -236,6 +242,7 @@ public:
 
         menubar->addAction(menuFichier->menuAction());
         menubar->addAction(menuOutils->menuAction());
+        menubar->addAction(menuPromo->menuAction());
         menubar->addAction(menu->menuAction());
         menuFichier->addAction(actionQuitter);
         menuOutils->addAction(actionGestion_des_produits);
@@ -244,6 +251,7 @@ public:
         menuOutils->addAction(actionChanger_mot_de_passe_Admin);
         menuOutils->addAction(actionSe_deconnecter);
         menu->addAction(actionA_propros);
+        menuPromo->addAction(actionPromo_UP);
 
         retranslateUi(MainWindow);
         QObject::connect(actionQuitter, SIGNAL(triggered()), MainWindow, SLOT(close()));
@@ -264,6 +272,7 @@ public:
         actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0, QApplication::UnicodeUTF8));
         actionA_propros->setText(QApplication::translate("MainWindow", "A propros", 0, QApplication::UnicodeUTF8));
         actionLimite_de_dette->setText(QApplication::translate("MainWindow", "Limite de dette", 0, QApplication::UnicodeUTF8));
+        actionPromo_UP->setText(QApplication::translate("MainWindow", "Promo UP", 0, QApplication::UnicodeUTF8));
         labelDette->setText(QApplication::translate("MainWindow", "La dette limite est de 10 \342\202\254", 0, QApplication::UnicodeUTF8));
         supprTextRecherche->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -313,6 +322,7 @@ public:
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0, QApplication::UnicodeUTF8));
         menuOutils->setTitle(QApplication::translate("MainWindow", "Outils", 0, QApplication::UnicodeUTF8));
         menu->setTitle(QApplication::translate("MainWindow", "?", 0, QApplication::UnicodeUTF8));
+        menuPromo->setTitle(QApplication::translate("MainWindow", "Promo", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
