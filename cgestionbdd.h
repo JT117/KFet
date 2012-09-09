@@ -34,6 +34,7 @@ public:
     static void removeClient( CClient& client );
     static void updateClient( CClient& client );
     static CClient getClient( int i );
+    static void updatePromo( QString from, QString to );
 
     static bool identification( QString username, QString password );
     static bool identification( QString password );

@@ -30,6 +30,8 @@
 #include "settings.h"
 #include "fenetresetdette.h"
 #include "fenetrenouvelletab.h"
+#include "filterobject.h"
+#include "fenetresuppressiononglet.h"
 
 class ToolButton;
 
@@ -49,6 +51,7 @@ public:
     CClient* getSelectedClient();
     void updateAllClient();
     void updatePanneauClient();
+    void contextMenuSuppressionTab();
 
 public slots:
     void ouvrirGestionProduit();
@@ -67,6 +70,7 @@ public slots:
     void updateLabelDette();
     void setDette();
     void changementDeTab(int num);
+    void supprOnglet();
 
 private:
     Ui::MainWindow *ui;
@@ -80,6 +84,7 @@ private:
     void construirePanneauProduit();
     void construirePanneauClient();
     void contextMenuEvent( QContextMenuEvent * event );
+
 };
 
 #endif // MAINWINDOW_H

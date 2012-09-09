@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     settings.cpp \
     fenetresetdette.cpp \
     toolbutton.cpp \
-    fenetrenouvelletab.cpp
+    fenetrenouvelletab.cpp \
+    filterobject.cpp \
+    fenetresuppressiononglet.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -55,7 +57,9 @@ HEADERS  += \
     settings.h \
     fenetresetdette.h \
     toolbutton.h \
-    fenetrenouvelletab.h
+    fenetrenouvelletab.h \
+    filterobject.h \
+    fenetresuppressiononglet.h
 
 FORMS    += \
     mainwindow.ui \
@@ -70,7 +74,8 @@ FORMS    += \
     fenetreeditionclient.ui \
     fenetrechangerlimitedette.ui \
     fenetresetdette.ui \
-    fenetrenouvelletab.ui
+    fenetrenouvelletab.ui \
+    fenetresuppressiononglet.ui
 
 
 

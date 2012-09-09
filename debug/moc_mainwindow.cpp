@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri 7. Sep 18:24:59 2012
+** Created: Sun 9. Sep 12:37:33 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -47,6 +47,7 @@ static const uint qt_meta_data_MainWindow[] = {
      252,   11,   11,   11, 0x0a,
      271,   11,   11,   11, 0x0a,
      286,  282,   11,   11, 0x0a,
+     307,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -60,7 +61,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "ajouterEnDette()\0supprimerClient()\0"
     "editionClient()\0changerLimiteDette()\0"
     "updateLabelDette()\0setDette()\0num\0"
-    "changementDeTab(int)\0"
+    "changementDeTab(int)\0supprOnglet()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -85,6 +86,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 13: _t->updateLabelDette(); break;
         case 14: _t->setDette(); break;
         case 15: _t->changementDeTab((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->supprOnglet(); break;
         default: ;
         }
     }
@@ -122,9 +124,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     }
     return _id;
 }

@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->centralwidget->setContentsMargins( 5, 5, 5, 5 );
 
     ui->tabWidget->setMovable( true );
+    FilterObject* filter = new FilterObject( this );
+    ui->tabWidget->installEventFilter( filter );
 
     connect( ui->actionGestion_des_produits, SIGNAL(triggered()), this, SLOT( ouvrirGestionProduit() ) );
     connect( ui->actionSuper_Utilisateur, SIGNAL(triggered()), this, SLOT( ouvrirLogin() ) );
@@ -90,6 +92,7 @@ void MainWindow::updatePanneauClient()
 void MainWindow::construirePanneauClient()
 {
     QStringList listeNomTab = Settings::getTablist();
+    ui->tabWidget->clear();
 
     for( int i = 0; i < listeNomTab.size(); i++ )
     {
@@ -116,6 +119,14 @@ void MainWindow::changementDeTab(int num)
     }
 }
 
+void MainWindow::supprOnglet()
+{
+    FenetreSuppressionOnglet fenetre( this );
+    fenetre.exec();
+
+    construirePanneauClient();
+}
+
 void MainWindow::setDette()
 {
     CClient* client = getSelectedClient();
@@ -126,7 +137,10 @@ void MainWindow::setDette()
 
 void MainWindow::contextMenuEvent( QContextMenuEvent *event )
 {
-    if( clientSelectionner() )
+    int x = event->x();
+    int y = event->y();
+
+    if( clientSelectionner() && x > 5 && x < 470 && y > 125 )
     {
         QMenu menu(this);
         QAction* actionSetDette = menu.addAction( "Fixer la dette", this, SLOT( setDette() ), 0 );
@@ -145,6 +159,26 @@ void MainWindow::contextMenuEvent( QContextMenuEvent *event )
 
         delete actionSetDette;
     }
+}
+
+void MainWindow::contextMenuSuppressionTab()
+{
+    QMenu menu(this);
+    QAction* actionSupprTab = menu.addAction( "Supprimer un onglet", this, SLOT( supprOnglet() ), 0 );
+    menu.move( this->cursor().pos().x(), this->cursor().pos().y() );
+
+    if( admin )
+    {
+        actionSupprTab->setEnabled( true );
+    }
+    else
+    {
+        actionSupprTab->setEnabled( false );
+    }
+
+    menu.exec();
+
+    delete actionSupprTab;
 }
 
 void MainWindow::updateLabelDette()
@@ -170,7 +204,7 @@ void MainWindow::editionClient()
     }
     else
     {
-        QMessageBox::warning( this, "KFet", "Veuillez d'abord selectionné un client.");
+        QMessageBox::warning( this, "KFet", "Veuillez d'abord selectionner un client.");
     }
 }
 

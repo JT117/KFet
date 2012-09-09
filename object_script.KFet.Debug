@@ -20,6 +20,8 @@ INPUT(
 ./debug\fenetresetdette.o
 ./debug\toolbutton.o
 ./debug\fenetrenouvelletab.o
+./debug\filterobject.o
+./debug\fenetresuppressiononglet.o
 ./debug\moc_mainwindow.o
 ./debug\moc_cfenetreajoutproduit.o
 ./debug\moc_cfenetregestionproduit.o
@@ -33,4 +35,5 @@ INPUT(
 ./debug\moc_fenetrechangerlimitedette.o
 ./debug\moc_fenetresetdette.o
 ./debug\moc_fenetrenouvelletab.o
+./debug\moc_fenetresuppressiononglet.o
 );

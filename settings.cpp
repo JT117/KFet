@@ -46,6 +46,7 @@ void Settings::setTabList(QStringList liste)
     QSettings settings( QDir::currentPath() + "/systeme/setting.ini", QSettings::IniFormat );
 
     settings.beginGroup("Tab");
+    settings.remove("");
 
     for( int i = 0; i < liste.size(); i++ )
     {

@@ -167,6 +167,22 @@ CClient CGestionBDD::getClient( int id )
     }
 }
 
+void CGestionBDD::updatePromo(QString from, QString to)
+{
+    if( CGestionBDD::connectionBDD() )
+    {
+        QSqlQuery query(db);
+
+        query.exec( "UPDATE CLIENT SET promo = '" + to + "' WHERE id IN ( SELECT id FROM CLIENT WHERE promo = '" + from + "') ;");
+
+        db.close();
+    }
+    else
+    {
+        QMessageBox::warning( 0, "KFet", "La base de données n'a pas pu être ouverte." );
+    }
+}
+
 
 void CGestionBDD::getClientList( QList<CClient*>& listClient )
 {
@@ -268,6 +284,7 @@ void CGestionBDD::updateClient( CClient& client )
     }
 }
 
+//***************************Gestion Admin******************************************
 bool CGestionBDD::identification(QString username, QString password)
 {
     if( CGestionBDD::connectionBDD() )
@@ -298,7 +315,6 @@ bool CGestionBDD::identification(QString username, QString password)
     }
 }
 
-//***************************Gestion Admin******************************************
 bool CGestionBDD::identification( QString password)
 {
     if( CGestionBDD::connectionBDD() )
